@@ -1,0 +1,23 @@
+p {
+    font-size: x-large;
+    color: rgba(1, 1, 51, 0.705);
+}
+.logdesign {
+    
+    background-color: gray;
+    height: 300px;
+    width: auto;
+
+
+}
+#login .logdesign{
+    border: 2px solid rgb(29, 26, 26);
+    text-align: center;
+  
+}
+
+.issuepage{
+    position: right;
+    color: rgb(62, 6, 194);
+
+}
