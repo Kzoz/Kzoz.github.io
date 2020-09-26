@@ -8,7 +8,7 @@ class Dog(val name: String, val breed: String, val competitionsParticipated: Lis
   
     // Write your function below 
   fun speak(){
-    println("$name says: Woof!")
+    println("$name says: Wooof!")
   }
   
   }
