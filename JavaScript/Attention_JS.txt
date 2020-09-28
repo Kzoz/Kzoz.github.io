@@ -1,0 +1,1 @@
+The JS programs will run only the lines of code are manually selected first and runned.
