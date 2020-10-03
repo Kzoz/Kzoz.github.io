@@ -22,8 +22,8 @@ used_words = []
 while True:
     
     #take the user's input, return the iuser input and last letter, and print the user input only
-    def getUserInput(user_input= input("Enter Your Word: ")):
-        #user_input = input("Enter your word: ")
+    def getUserInput(user_input= input("Enter Your Word: ").lower()):
+        user_input = user_input.strip()
         #user_ending = user_input[-1]
         user_begin = user_input[0]
         return(user_input, user_begin)#, user_ending)
