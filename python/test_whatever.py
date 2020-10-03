@@ -1,14 +1,9 @@
-#int k = 16;
-#Line 2: int result = ____;
-#Line 3: while (k > ____){
-#Line 4:     result = result * 2;
-#Line 5:     System.out.println("2^" + (16 - k +1) + "=" + result);
-#Line 6:     _________
-#Line 7: }
+import random
 
-k = 16
-n = 1
-while k > 0:
-    n = n*2
-    k -=1
-    print(n)
+lib_of_list = ["what","no","need","apple","banana","cinnamon","diamond","sun","view","light","element","pen","vague","house","mix","kite","dog","cat","zoom","round","yes",]
+user_input = input("Enter a word")
+user_ending = user_input.endswith()
+print(user_ending)
+first_word = random.choice(lib_of_list)
+pc_ending = first_word.endswith()
+print(pc_ending)
