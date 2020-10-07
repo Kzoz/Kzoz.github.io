@@ -1,7 +1,7 @@
 import random
 
 library = ["exit","apple","pen","need","cover","book","down","up","no","inverse","intro","avatar",
-          "banana","lemon","diamond","end","event","elephant","entropy","energy","fine","find","finland","game","gain",
+          "banana","baby","balloon","ball","blank","lemon","chose","choir","clothes","chain","diamond", "die", "druid", "drive", "disk","dance", "dive","end","event","elephant","entropy","energy","fake","food","fine","find","finland","game","gain",
            "good","great","home","house","hole","in","image","illustration",
           "inverse","jealous","ending","envelope","entertainment","joy","japan","jamaica","koala","kite","kayak",
            "kenya","kind","lime","live","lame","louisiana","mont","mint","mine","mind",
