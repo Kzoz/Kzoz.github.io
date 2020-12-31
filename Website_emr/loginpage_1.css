@@ -37,6 +37,15 @@ button span {
     opacity: 1;
     right: 2;
   }
+  #linktocredentials{
+    padding-bottom: 340px;
+    padding-top: 50px;    
+  }
+  #linktoissue{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(93, 161, 165)
+  }
 
 .issuedesign {
   
@@ -47,4 +56,5 @@ button span {
     width: 35px;
     background-color: white;
     margin-left: auto;
+    
 }

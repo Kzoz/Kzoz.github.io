@@ -84,3 +84,8 @@ h1 {
     background-position: center;
     height: 300px;
   }
+
+  
+  #overlay{
+    padding-top: 60px;
+  }
