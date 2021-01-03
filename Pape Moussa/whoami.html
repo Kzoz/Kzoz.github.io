@@ -12,20 +12,24 @@
     <!-- This section0 only contains my photo, name and a greeting line. the name and photo are on top
     of the photo-->
     <header>
-        <figure class="idphoto">
-            <img src="idphoto.png" alt="man in a photoshoot">
-            <p> Pape Moussa</p>
-            <p> Salam to you!</p>
+        <div class="idphoto">
+            <!-- Probably better replace the div class="idphoto" by <figure> for the sake of html structure but the entire header get shifted a bit on the right-->
+            <!--img src="idphoto.png" alt="man in a photoshoot"-->
+            <p class="caption left_position"> Hi there!</p>
+            <p class="caption right_position"> This is Pape Moussa</p>
             
-        </figure>
+           
+        </div>
         <nav>
-            <ul>
-                <li>My journey</li>
-                <li>Skills</li>
-                <li>Interests</li>
-                <li>Recommendations</li>
-                <li>Contacts</li>
-            </ul>
+            <div class="container">
+                <ul>
+                    <li><a href="#title_section1">My Journey </a></li>
+                    <li><a href="#title_section2">Skills</a></li>
+                    <li><a href="#title_Section3">Interests</a></li>
+                    <li><a href="#title_section4">Recommendations</a></li>
+                    <li><a href="#title_section5">Contacts</a></li>
+                </ul>
+            </div>
         </nav>
         
     </header>
@@ -34,7 +38,7 @@
     <main>
         <!-- The section1 should be divided in 4 subsections. Each Containing an institution that I went to-->
         <section class ="myjourney">
-            <div class="title_section1">
+            <div id="title_section1">
                 <h1> --- My Journey --- </h1>
             </div>
 
@@ -53,7 +57,7 @@
 
         <!-- the skill section is divided in 2. CS related skills and others-->
         <section class="skills">
-            <div class="title_section2">
+            <div id="title_section2">
                 <h1> --- Skills --- </h1>
             </div>
 
@@ -70,7 +74,7 @@
         <!-- the interest will display only names of my fields of interest. 
             probably moving in between the section area-->
         <section class="interests">
-            <div class="title_section3">
+            <div id="title_section3">
                 <h1> --- Interests --- </h1>
                 
             </div>
@@ -84,13 +88,13 @@
         <!--the recommendation section is an extensiom of the previous section. 
             It will contain Youtube channel recommendations, their description, books and their description -->
         <section class="recommendations">
-            <div class="title_section4">
-                <h1> --- Interests --- </h1>
+            <div id="title_section4">
+                <h1> --- Recommendations --- </h1>
             </div>
 
             <article class="content_section4">
                 <div> 
-                    <p> Never Stop Learning!</p>
+                    <p> Stay Curious!</p>
                     <aside> as my mum♡ used to say</aside>
                 </div>
 
@@ -101,10 +105,10 @@
 
     <!-- just contacts!-->
     <footer>
-        <div class="title_section5">
+        <div id="title_section5">
             <h1> --- Contacts --- </h1>
         </div>
-        <div class="content_section5">
+        <div id="content_section5">
 
         </div>
     </footer>
