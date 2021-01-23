@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 keyw = input('What are you looking for on Youtube: ')
+googling = input('Google Search: ')
 driver = webdriver.Chrome()
 driver.maximize_window()
 time.sleep(5)
@@ -11,12 +12,12 @@ youtube = 'https://www.youtube.com/'
 theverge = 'https://www.theverge.com/'
 bbcnews = 'https://www.bbc.com/news'
 japantimes = 'https://www.japantimes.co.jp'
+google = 'https://www.google.com/'
 
 driver.get(youtube)
 
 search_box = driver.find_element_by_xpath('//*[@id="search"]')
 search_box.send_keys(keyw)
-
 search_button = driver.find_element_by_xpath('//*[@id="search-icon-legacy"]')
 search_button.click()
 
@@ -33,6 +34,16 @@ time.sleep(1)
 driver.execute_script("window.open('');")
 driver.switch_to_window(driver.window_handles[3])
 driver.get(japantimes)
+time.sleep(1)
+
+driver.execute_script("window.open('');")
+driver.switch_to_window(driver.window_handles[4])
+driver.get(google)
+
+search_google = driver.find_element_by_xpath('//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input')
+search_google.send_keys(googling)
+search_google.send_keys(Keys.ENTER)
+
 # The colab automation is not trusted by Chrome thus requires an credentials.
 
 #driver.get('https://colab.research.google.com/drive/1DisWLq2mESaqQc4wpowOwCPj08_Kgcy2')
