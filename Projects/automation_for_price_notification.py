@@ -36,6 +36,6 @@ def send_mail():
     print('Hey the price reduction email has been sent!!')
     server.quit()
     
-while True:
-    check_price()
-    time.sleep(604800)
+
+check_price()
+#time.sleep(604800)
