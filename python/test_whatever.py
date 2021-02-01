@@ -1,9 +1,17 @@
-import random
+def binarysearch(lst, index):
+    begin_index = 0
+    end_index = len(lst)-1
 
-lib_of_list = ["what","no","need","apple","banana","cinnamon","diamond","sun","view","light","element","pen","vague","house","mix","kite","dog","cat","zoom","round","yes",]
-user_input = input("Enter a word")
-user_ending = user_input.endswith()
-print(user_ending)
-first_word = random.choice(lib_of_list)
-pc_ending = first_word.endswith()
-print(pc_ending)
+    while begin_index <= end_index:
+        mid_index = begin_index + (end_index-begin_index)//2
+        mid_val = lst[mid_index]
+        if mid_val == index:
+            return mid_index 
+        elif index < mid_val:
+            end_index = mid_index-1
+        else:
+            begin_index = mid_index+1
+    return None
+
+lst_a = [1,2,3,4,5,6,7,8,9,10,11]
+print(binarysearch(lst_a, 8))
