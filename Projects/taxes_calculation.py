@@ -1,7 +1,7 @@
 import math
 
 def revenue():
-    user_input= input("Biweekly or Yearly revenue[M/Y] ?: ")
+    user_input= input("Biweekly or Yearly revenue[B/Y] ?: ")
     if user_input == "Y".lower() or user_input == "Yearly".lower(): 
         rvn = int(input("Enter your annual revenue: $"))
         return rvn
