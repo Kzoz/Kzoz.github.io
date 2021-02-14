@@ -4,7 +4,7 @@ import re
 text_file = open("words.txt", "r")
 lines = text_file.readlines()
 
-no_letters = '[gkmqvwxioz]'
+no_letters = '[gkmqvwxiz]'
 longest_word = ""
 for i in lines:
     bad_words = re.findall(no_letters,i)
