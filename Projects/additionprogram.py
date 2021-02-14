@@ -18,7 +18,7 @@ def checkAnswer( userAnswer ):
 
     correctAnswer = randomNumber1 + randomNumber2
     if userAnswer == correctAnswer:
-        print("\nCongralutions Mona! You did a great job!")
+        print("\nCongralutions Mo! You did a great job!")
     else:
         print("\nOops. That was close. The correct answer is ", correctAnswer)
 
