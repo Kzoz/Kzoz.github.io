@@ -4,15 +4,32 @@
 #include <cstdlib>
 #include "atm.hpp"
 
-// check balance
-// deposit
-// enter passcode
-// transfer money
+//add transfer
 int main()
 {
     atm moussa;
-    moussa.checkbalance();
-    moussa.deposit();
-    moussa.checkbalance();
-   
+
+    while (true)
+    {
+        int rslt = moussa.mainmenu();
+        if (rslt==1)
+        {
+            moussa.deposit();
+        }
+        else if (rslt==2)
+        {
+            moussa.withdrawal();
+        }
+        else if (rslt ==3)
+        {
+            moussa.checkbalance();
+        } 
+        else if (rslt ==4)
+        {
+            moussa.exitprg();
+        } 
+        else {
+            std::cout<<"Incorrect input";
+        }
+    }
 }

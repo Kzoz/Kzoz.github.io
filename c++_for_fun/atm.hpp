@@ -6,10 +6,14 @@ private:
     int mypasscode = 1234;
     
 public:
+    int mainmenu();
     void checkbalance();
     void deposit();
+    void withdrawal();
     int enterpasscode();
+    void exitprg();
 };
+
 
 // 
 //
