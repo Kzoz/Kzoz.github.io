@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/11/22 15:45:47.000.367,=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/11/22 15:45:47.000.322,=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Project2PCH1.h</Transaction>
+    <Transaction>2021/11/23 15:42:48.000.745,=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Project2PCH1.h</Transaction>
+    <Transaction>2021/11/23 15:42:49.000.041,=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/11/23 15:51:57.000.467,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeecalc.h=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.h</Transaction>
+    <Transaction>2021/11/23 15:51:57.000.467,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeecalc.cpp=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/11/23 15:51:57.000.467,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeecalc.dfm=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2021/11/23 15:58:37.000.999,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeecalculator.h=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Project2PCH1.h</Transaction>
+    <Transaction>2021/11/23 15:58:43.000.891,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\TDEE.cbproj=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Project2.cbproj</Transaction>
+    <Transaction>2021/11/24 10:19:19.000.157,=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/11/24 10:19:47.000.322,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.cpp=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeeResult.cpp</Transaction>
+    <Transaction>2021/11/24 10:19:47.000.322,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.h=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeeResult.h</Transaction>
+    <Transaction>2021/11/24 10:19:47.000.322,D:\Users\seisan\Documents\Embarcadero\Studio\Projects\Unit2.dfm=D:\Users\seisan\Documents\Embarcadero\Studio\Projects\tdeeResult.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="TDEE.cpp"/>
+    <File Path="tdeecalc.cpp"/>
+    <File Path="tdeecalc.cpp"/>
+    <File Path="tdeecalc.dfm"/>
+    <File Path="tdeecalc.h"/>
+    <File Path="tdeecalculator.h"/>
+    <File Path="tdeeResult.cpp"/>
+    <File Path="tdeeResult.cpp"/>
+    <File Path="tdeeResult.dfm"/>
+    <File Path="tdeeResult.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

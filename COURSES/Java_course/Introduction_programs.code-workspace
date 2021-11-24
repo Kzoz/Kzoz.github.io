@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "Java",
+			"path": "."
+		},
+		{
+			"name": "emr_",
+			"path": "/Users/PapeMoussa/emr_"
+		}
+	],
+	"settings": {
+		"maven.view": "flat"
+	}
+}

@@ -1,5 +1,0 @@
-how to make and manipulate lists and dictionaries
-how to open, modify and manage adn obtain info from external files  
-how to use pointers and references to actually manipulate memory
-C++ builder
-Qt
