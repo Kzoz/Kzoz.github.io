@@ -2,8 +2,9 @@ class atm
 {
     
 private:
-    int mybalance= 0;
+    int mybalance= 3000;
     int mypasscode = 1234;
+    std::string customer;
     
 public:
     int mainmenu();
@@ -11,6 +12,7 @@ public:
     void deposit();
     void withdrawal();
     int enterpasscode();
+    void transfer(atm aite);
     void exitprg();
 };
 

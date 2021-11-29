@@ -8,6 +8,7 @@
 int main()
 {
     atm moussa;
+    atm mak;
 
     while (true)
     {
@@ -26,8 +27,12 @@ int main()
         } 
         else if (rslt ==4)
         {
-            moussa.exitprg();
+            moussa.transfer(mak);
         } 
+        else if (rslt == 5)
+        {
+            moussa.exitprg();
+        }
         else {
             std::cout<<"Incorrect input";
         }

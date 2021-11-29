@@ -31,17 +31,18 @@ int atm::mainmenu(){
     std::cout<<"1. Deposit \n";
     std::cout<<"2. Withdrawal \n";
     std::cout<<"3. Balance \n";
-    std::cout<<"4. Exit \n";
+    std::cout<<"4. Transfer \n";
+    std::cout<<"5. Exit \n";
     int usr_option;
     std::cin>>usr_option;
-    if (usr_option <=0 or usr_option >=5)
-    {    
-        std::cout<<"Incorrect choice, please try again! \n";
-        exit(1);
+    //if (usr_option <=0 or usr_option >=6)
+    //{    
+    //   std::cout<<"Incorrect choice, please try again! \n";
+    //   exit(1);
         
-    } else {
-        return usr_option;
-    }
+    //} else {
+    return usr_option;
+    //}
     
 }
 
@@ -83,3 +84,18 @@ void atm::exitprg(){
     exit(1);
 }
 
+void atm::transfer(atm aite){
+    std::cout<<"TRANSFER \n";
+    std::string transfer_aite;
+    int transfer_amount;
+    std::cout<<"Who would you like to transfer cash to? \n";
+    std::cin>> transfer_aite;
+    std::cout<<"How much would you like to transfer \n";
+    std::cin>>transfer_amount;
+    aite.mybalance += transfer_amount;
+    mybalance -= transfer_amount;
+    std::cout<<"\nYour new balance is ¥"<<mybalance<<".\n";
+    std::cout<<"\nReceiver's balance is ¥"<<aite.mybalance<<".\n \n";
+
+    
+}
