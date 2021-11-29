@@ -75,7 +75,7 @@ def userdt():
     error_count = 3
     name = input("Enter your name: ").lower()
     age = input("What is your age? ")
-    genre,male,female = "Male or Female: ","male","female"
+    genre,male,female = "Male or Female","male","female"
     sex = checkError(error_count,genre,male,female)
     weight = input("What is your weight in kg? ")
     height = input("What is your height in centimeter? ")
@@ -90,5 +90,3 @@ def userdt():
 
 userdt()
 
-#Improve the program with better precision calculation
-#Potentially make a webpage of it 
