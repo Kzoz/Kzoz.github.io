@@ -9,7 +9,7 @@ URL = 'https://kakaku.com/item/J0000033539/' # Sony XM4
 headers= {"User-Agent":'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15'}
 
 # Check price: Using Requests, 
-# find which class or ID hold the title and price of hte item we want to track.
+# find which class or ID hold the title and price of the item we want to track.
 #Convert the price(str) into num
 
 def check_price():
