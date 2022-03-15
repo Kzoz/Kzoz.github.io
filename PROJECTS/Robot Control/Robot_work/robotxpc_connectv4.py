@@ -10,7 +10,7 @@ from threading import Thread
 now = datetime.now()
 seq = str(now.strftime("%Y%m%d"))
 txtname = "kiroku/robot_kiroku"+seq+".txt"  #create output filename
-counter = 1
+counter = 1     #counting number of works executed in a single launch
 conn = ""
 work = 0
 
@@ -30,26 +30,27 @@ def process(ilst):
             sok.sendall(b''+(x).encode('ascii')) #send values 1 by 1
             time.sleep(0.02)    
             data = sok.recv(1024)
-                #--------------------------**************--------------------
-            def checkerror(data,sok,work):
+                #--------------------------******* Error Handler ********--------------------
+            def checkerror(data,sok,work):          #handle the errors on rbt side till fixed
                 if data == bytes(b'HNERROR\r'):
-                    while data == bytes(b'HNERROR\r'):
-                        work = 21
+                    while data == bytes(b'HNERROR\r'):  
+                        work = 21   #the type of error is communicated to the upper PC through work
                         time.sleep(0.5)
                         sok.sendall(b'RECHECK')
                         time.sleep(0.02)
                         data = sok.recv(1024)
-                        if data !=  bytes(b'HNERROR\r'):
+                        if data !=  bytes(b'HNERROR\r'): #once the error is no more, break
                             break
                 return data,sok,work
             data,sok,work = checkerror(data,sok,work)
-                #--------------------------******************-------------------
-                                    
+
+                #--------------------------******** Error Handler ********-------------------
+             #might need an encapsulated func to handle work confirmation                        
             if data == bytes(b'KANA6\r'):
                 sok.sendall(b'OK')
                 work = 0
 
-            if data == bytes(b'END\r'):         #3sec for data eval
+            if data == bytes(b'END\r'):        #Rbt work is done! save in .txt file and move back to server side
                 now = datetime.now()            #acquire current time
                 dt = now.strftime("%Y/%m/%d %H:%M:%S")
                 print(dt,"---WORK {num} DONE!---".format(num = counter)) #time work finished at
@@ -61,10 +62,10 @@ def process(ilst):
                 feedbck = open(txtname,append_write)
                 if counter == 1:
                     feedbck.write("------------NEW JOB-------------\n")
-                feedbck.write(dt)
-                feedbck.write("---WORK {num} DONE!---".format(num = counter)) #Log end time in txtfile
+                feedbck.write(dt)#Log in txtfile↓
+                feedbck.write("---WORK {num} DONE!---".format(num = counter)) 
                 feedbck.write("\n")
-                counter += 1
+                counter += 1 
                 break
         print('Received from Robot:', repr(data),"\n")
         #feedbck.write("---END---\n")
@@ -73,10 +74,9 @@ def process(ilst):
     
 #Check Robot Status   
 def status():
-    global conn # make conn global to keep using it in status()
+    global conn # make conn, work global to keep using them in status func
     global work 
     work = work
-    #with conn:
     while work == 0: # meaning robot is executing tasks
         data = conn.recv(1024)
         if work == 21:
