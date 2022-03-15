@@ -1,0 +1,29 @@
+Xs and Ys that don't require physical plugs are higher numbers. They are mainly controlled and/or monitored on the RBT program. 
+
+x1 = Hex nut cylinder
+x2 = Hex nut presence sensor
+x3 = black pipe sensor
+x4 = grey and gold pin sensor
+x5 = Robot hand sensor
+x6 = bolt sensor
+x7 = kanamono E2 sensor
+x10 = Hopper LS UP
+x11 = Hopper LS DOWN
+x12 = Hex Nut Presence Sensor Upper Side
+x13 = Hex Nut Presence Sensor Lower Side
+
+x100 = Robot Hand (Open, Close)
+x101 = Reset Hex Nut Counter (From RBT)
+x102 = Reset Hex Nut Error (From RBT)
+x136 = Transfer Hex Nut Amount (From RBT)
+________________________________________________
+Y0 (CYL 1) = Hex Nut Cylinder
+Y1 (CYL 2) = Robot Hand
+Y2 (CYL 3) = Hex Nut Hopper
+
+Y21 = Hex Nut Work done (activated on PLC, reset through RBT)
+Y23 = Black pipe Signal(monitored by RBT)
+Y24 = Pin Signal (monitored by RBT)
+Y26 = Bolt Signal
+Y27 = Kanamono E2 Signal
+Y36 = Time Out Error (activated when no more Hex, reset X2 is ON)
