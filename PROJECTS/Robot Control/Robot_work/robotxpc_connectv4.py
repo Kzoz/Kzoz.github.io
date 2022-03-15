@@ -31,20 +31,24 @@ def process(ilst):
             time.sleep(0.02)    
             data = sok.recv(1024)
                 #--------------------------**************--------------------
-            if data == bytes(b'HNERROR\r'):
-                while data == bytes(b'HNERROR\r'):
-                    work = 21
-                    time.sleep(0.5)
-                    sok.sendall(b'RECHECK')
-                    time.sleep(0.02)
-                    data = sok.recv(1024)
-                    if data !=  bytes(b'HNERROR\r'):
-                        break
-                    
+            def checkerror(data,sok,work):
+                if data == bytes(b'HNERROR\r'):
+                    while data == bytes(b'HNERROR\r'):
+                        work = 21
+                        time.sleep(0.5)
+                        sok.sendall(b'RECHECK')
+                        time.sleep(0.02)
+                        data = sok.recv(1024)
+                        if data !=  bytes(b'HNERROR\r'):
+                            break
+                return data,sok,work
+            data,sok,work = checkerror(data,sok,work)
+                #--------------------------******************-------------------
+                                    
             if data == bytes(b'KANA6\r'):
                 sok.sendall(b'OK')
                 work = 0
-                #--------------------------******************-------------------
+
             if data == bytes(b'END\r'):         #3sec for data eval
                 now = datetime.now()            #acquire current time
                 dt = now.strftime("%Y/%m/%d %H:%M:%S")
