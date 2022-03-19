@@ -24,6 +24,7 @@ def process(ilst):
     global counter
     counter = counter
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sok:
+        #sok.settimeout(30)
         sok.connect((HOST, PORT)) #connect to Robot
         lst = ilst
         for x in lst: 
@@ -31,18 +32,20 @@ def process(ilst):
             time.sleep(0.02)    
             data = sok.recv(1024)
                 #--------------------------******* Error Handler ********--------------------
-            def checkerror(data,sok,work):          #handle the errors on rbt side till fixed
+            def checkerror(data,sok):          #handle the errors on rbt side till fixed
+                global work
+                work = work
                 if data == bytes(b'HNERROR\r'):
                     while data == bytes(b'HNERROR\r'):  
-                        work = 21   #the type of error is communicated to the upper PC through work
+                        work = 21   #the type of error is communicated to PC 0 through work's value
                         time.sleep(0.5)
                         sok.sendall(b'RECHECK')
                         time.sleep(0.02)
                         data = sok.recv(1024)
                         if data !=  bytes(b'HNERROR\r'): #once the error is no more, break
                             break
-                return data,sok,work
-            data,sok,work = checkerror(data,sok,work)
+                return data,sok
+            data,sok = checkerror(data,sok)
 
                 #--------------------------******** Error Handler ********-------------------
              #might need an encapsulated func to handle work confirmation                        
@@ -113,6 +116,9 @@ def DataTransfer():
                     DataTransfer()#----------------*********---------------------
                 #while data != (b'STS\r\n'):
                 #    conn.sendall((b'STS,2_1\r\n')) => meaning something different from sts has been sent.
+                #    if data == (b'STS\r\n'):
+                #       conn.sendall(b'STS,0\r\n')
+                #       break
                 # later on a list of the potential errors (STS,2_x) will be necessary.
                 if data == (b'STS\r\n'): #this line will be indentend into the while loop
                     conn.sendall(b'STS,0\r\n') #this line too + break at the next line.
