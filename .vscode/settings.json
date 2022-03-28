@@ -63,5 +63,6 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "vector": "cpp"
-    }
+    },
+    "notebook.output.textLineLimit": 25
 }
