@@ -1,0 +1,42 @@
+RS-232C interface has the following two modes.
+ Stream mode Outputs data continuously and can be used to print data.
+ Command mode Controls the scale using commands from a computer.
+
+To use RS-232C interface, set the parameters of the “Baud rate ( f4 )”, “ Output
+mode ( f5 )”, “ Format ( f15 )” in the function table.
+ 
+Optional cables are available as follows:
+ AX-KO577A-200 RS-232C cable, D-sub 25 pin, 2 m
+ AX-KO1786-200 RS-232C cable, D-sub 9 pin, 2 m
+
+ Transmission system:	 EIA RS-232C
+ Transmission:		 Asynchronous, bi-directional, half-duplex
+ Data format:		 Baud rate 2400, 4800, 9600 bps
+ 			 Data 7 bits
+ 			 Parity 1 bit, Even
+ 			 Start bit 1 bit
+ 			 Stop bit 1 bit
+ 			 Code ASCII
+ 			 Terminator CR LF (CR: 0Dh, LF: 0Ah) 
+
+There are four headers for the type of data and weighing condition.
+ Stable weighing data	ST 				Unstable weighing data	US
+ Stable counting data	QT 				Out of range ( Over)	OL
+
+
+Definition of symbols
+ 	CR (carriage return) 			LF (line feed)
+ 	0Dh 0Ah 				Space 20h
+
+
+-------------------------------------------------------------------------------------------------
+Potential ways of retrieving data from weightscale
+
+1. Read the data through the PLC and input the data in the registers controlled by the robot.
+	At the end iof a cycle (after the robot insert the Kana in the box), it retrieves the 
+	data from a certain register allocated to it and substracts from the weight it was before the input.
+	The weight of all elements will need to be logged into a vector and we can access through it using M100.
+	In case the difference between the new weight and the previous weight doesn't go beyond the threshold,
+	we will trigger the robot to redo the same cycle it just did.
+
+2.  
