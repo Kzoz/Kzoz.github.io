@@ -1,3 +1,0 @@
-	PC Side		Robot Side	PLC Side	Meaning
-1.	STS,2_1		Error 9101	Y36			No Hex Nuts
-2.	STS,2_2		N/A			N/A			Incorrect Input from PC 0
