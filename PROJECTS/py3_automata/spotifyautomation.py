@@ -17,4 +17,3 @@ results = sp.playlist_tracks(playlist_id='https://open.spotify.com/playlist/75ja
 for i in range(len(results['items'])):
     print(results['items'][i]['track']['artists'][0]['name'],'--',results['items'][i]['track']['name'],'--',
     results['items'][i]['track']['popularity'])
-
