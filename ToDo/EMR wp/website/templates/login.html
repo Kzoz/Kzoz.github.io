@@ -1,0 +1,56 @@
+
+
+{% extends "base.html" %}
+{% block title %}Créer un nouveau compte{% endblock %} 
+
+{% block content %}
+<style>
+
+    .mainform{ display: flex; justify-content:center;
+    margin: 1rem auto;}
+    .form-control2{width: 300px;}
+    #confirmBtn { width: 200px;;}
+    .card {
+        margin: 2rem auto;
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        background-color: rgba(61, 66, 38, 0.26);
+        padding: .75rem;
+        box-shadow: 0 3px 10px rgba(49, 34, 111, 0.2);
+    }
+</style>
+
+<div class="card">
+<form method="POST" align="center" class="mainform">
+    <fieldset>
+      <legend>Créer un nouveau compte</legend><br>
+
+
+      <div class="form-group">
+         <input type="text" class="form-control2" id="name" placeholder="Nom et Prénom(s)">
+       </div><br>
+
+      <div class="form-group">
+        <input type="email" class="form-control2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+        <small id="emailHelp" class="form-text text-muted">Saisissez une adresse email valide.</small>
+      </div><br>
+      <div class="form-group">
+        <input type="password" class="form-control2" id="exampleInputPassword1" 
+        placeholder="Saisissez un mot de passe" required minlength="8" maxlength="20">
+      </div><br>
+      <div class="form-group">
+        <input type="password" class="form-control2" id="exampleInputPassword2" 
+        placeholder="Ressaisissez votre mot de passe" required minlength="8" maxlength="20">
+      </div><br>
+
+      <button id="confirmBtn" type="submit" class="btn btn-primary">Continuer</button>
+      <div><br>
+        <p>Vous possédez déjà un compte ? <a href="#" style="color: rgb(31, 144, 215);">Connexion</a></p>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+{% endblock%}
+</html>
