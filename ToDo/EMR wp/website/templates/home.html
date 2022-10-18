@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title%}Accueil{%endblock%}
+
+{% block content%} 
+
+<style>
+
+.centrer{align-content: center;
+  margin        : 3rem;
+  padding       : 0;
+  display:flex;
+  place-content: center;
+}
+
+.innerBtn{
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 15px;
+  border-radius: 20px;
+  font-size: xx-large;
+  width: 50%;
+  padding-block: 15%;
+  background-color: rgba(42, 46, 14, 0.26);;
+}
+
+button#bt1.innerBtn:hover {
+  background-color: rgb(109, 126, 71);
+  transition: all 2s;
+}
+
+button#bt2.innerBtn:hover {
+  background-color: rgb(173, 169, 30);
+  transition: all 2s;
+}
+
+button#bt1 span{
+  padding-top: 20px ;
+}
+
+
+</style>
+
+<div class="centrer">
+    <button type="button" class="innerBtn" id="bt1"  onclick="window.location.href='/patients'"><span>Liste des patients</span> </button>
+    <button type="button" class="innerBtn" id="bt2" onclick="window.location.href='/newpatient'"><span>Enregistrer un nouveau patient</span></button>
+
+</div>
+
+{%endblock%}

@@ -1,42 +1,231 @@
+<!-- Sidenav-->
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="test.css" type="text/css">
     <title>test</title>
 </head>
 <body>
-    
 
-<div class="container">
-	<!-- code here -->
-	<div class="card">
-		<div class="card-image">	
-			<h2 class="card-heading">
-				Get started
-				<small>Let us create your account</small>
-			</h2>
-		</div>
-		<form class="card-form">
-			<div class="input">
-				<input type="text" class="input-field" value="Alexander Parkinson" required/>
-				<label class="input-label">Full name</label>
-			</div>
-						<div class="input">
-				<input type="text" class="input-field" value="vlockn@gmail.com" required/>
-				<label class="input-label">Email</label>
-			</div>
-						<div class="input">
-				<input type="password" class="input-field" required/>
-				<label class="input-label">Password</label>
-			</div>
-			<div class="action">
-				<button class="action-button">Get started</button>
-			</div>
-		</form>
-		<div class="card-info">
-			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
-		</div>
-	</div>
+
+<div
+  id="sidenav-3"
+  data-mdb-close-on-esc="false"
+  class="sidenav"
+  data-mdb-hidden="false"
+  data-mdb-position="absolute"
+  data-mdb-focus-trap="false"
+  data-mdb-scroll-container="#scroll-container"
+  role="navigation"
+>
+  <div class="text-center">
+    <h3 class="py-4">Examples</h3>
+    <hr class="m-0" />
+  </div>
+  <ul id="scroll-container" class="sidenav-menu">
+    <li class="sidenav-item">
+      <div class="input-group rounded my-2">
+        <div class="form-outline">
+          <input id="search-input-sidenav" type="search" id="form1" class="form-control" />
+          <label class="form-label" for="form1">Search</label>
+        </div>
+      </div>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 1</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 2</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 3</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 4</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 5</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 6</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 7</span>
+      </a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 8</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="text-center" style="min-height: 3rem;">
+    <hr class="mt-0 mb-2" />
+    <small>mdbootstrap.com</small>
+  </div>
 </div>
+<script src="test.js"></script>
 </body>
 </html>
+<!-- Sidenav-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends "base.html" %}
+{% block title %}Liste des patients{% endblock %} 
+
+{% block content %}
+
+<style>
+    .sidenav{
+        float: left;
+    }
+    .mainpage:after{
+        content: "";
+        display: table;
+        clear: both;
+        height: 100vh;
+    }
+
+    #sidenav-3{
+        padding: 10px;
+        width: auto;
+        min-width: 25%;
+        border-right: 0.1px solid;
+        border-color: rgb(156, 164, 164);
+        height: 100%;
+    }
+
+    #patientinfo{
+        width: auto ;
+        align-content: center;
+    }
+
+
+    .sidenav-menu{
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align:justify;
+        height: 100%;
+    }
+    .form-outline{
+        width: auto;
+    }
+
+</style>
+
+
+<div class="mainpage">
+    <div
+    id="sidenav-3"
+    data-mdb-close-on-esc="false"
+    class="sidenav"
+    data-mdb-hidden="false"
+    data-mdb-position="absolute"
+    data-mdb-focus-trap="false"
+    data-mdb-scroll-container="#scroll-container"
+    role="navigation">
+        <div class="text-center">
+            <h3 class="py-4">Liste des patients</h3>
+            <hr class="m-0" />
+        </div>
+        
+        <ul id="scroll-container" class="sidenav-menu">
+            <div class="input-group rounded my-2">
+                <div class="form-outline">
+                    <input id="search-input-sidenav" type="search" id="form1" class="form-control" placeholder="Nom du Patient"/>
+                </div>
+            </div>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 1</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 2</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 3</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 4</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 5</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 6</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 7</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 8</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 9</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 10</span>
+            </a>
+            </li>
+            <li class="sidenav-item">
+            <a class="sidenav-link">
+                <i class="far fa-smile pe-3"></i><span>Patient 11</span>
+            </a>
+            </li>
+        </ul>
+
+    </div>
+        <script src="static/test.js"></script>
+    <div class="sidenav" id="patientinfo">
+        <h2>Page Header</h2>
+        <p>Some random text inside this box to demonstrate the example code</p>
+        <p>Some random text inside this box to demonstrate the example code</p>
+    </div>
+</div>
+{%endblock%}

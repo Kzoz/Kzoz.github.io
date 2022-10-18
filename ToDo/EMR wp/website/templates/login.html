@@ -1,56 +1,58 @@
-
-
 {% extends "base.html" %}
-{% block title %}Créer un nouveau compte{% endblock %} 
 
-{% block content %}
+{% block title %}Se Connecter{% endblock %}
+
+{% block content%} 
+
 <style>
-
-    .mainform{ display: flex; justify-content:center;
-    margin: 1rem auto;}
-    .form-control2{width: 300px;}
-    #confirmBtn { width: 200px;;}
-    .card {
-        margin: 2rem auto;
-        display: flex;
-        flex-direction: column;
-        max-width: 400px;
-        background-color: rgba(61, 66, 38, 0.26);
-        padding: .75rem;
-        box-shadow: 0 3px 10px rgba(49, 34, 111, 0.2);
+  .mainform{text-align: center;}
+    .card{
+      margin        : 0;
+      padding       : 0;
+      display       : grid;
+      place-content : center;
+      min-height    : 100vh;
+  }
+   .form-control2 {
+    height: 60px;
+    width: 300px;
+    border: 0.01px solid; border-color: rgb(198, 209, 219);
+    padding: 10px;
     }
+
+    input[type="email"]{border-radius: 7px 7px 0px 0px;}
+    input[type="password"]{border-radius: 0px 0px 7px 7px;}
+
+    #continueBtn{
+      height: 45px;
+      width: 300px;
+      background-color: rgb(12, 149, 228);
+      font-size:larger;
+    }
+
 </style>
 
 <div class="card">
-<form method="POST" align="center" class="mainform">
-    <fieldset>
-      <legend>Créer un nouveau compte</legend><br>
+<form method="POST" class="mainform">
+  <fieldset>
+    <legend><p style="font-size: xx-large;">Se connecter</p></legend>
 
 
-      <div class="form-group">
-         <input type="text" class="form-control2" id="name" placeholder="Nom et Prénom(s)">
-       </div><br>
+    <div class="form-group">
+      <input type="email" class="form-control2" id="exampleInputEmail1" 
+      aria-describedby="emilHelp" placeholder="Adresse email"><br>
+      <input type="password" class="form-control2" id="exampleInputPassword1" 
+      placeholder="Mot de passe" required minlength="8" maxlength="20">
+    </div><br>
 
-      <div class="form-group">
-        <input type="email" class="form-control2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-        <small id="emailHelp" class="form-text text-muted">Saisissez une adresse email valide.</small>
-      </div><br>
-      <div class="form-group">
-        <input type="password" class="form-control2" id="exampleInputPassword1" 
-        placeholder="Saisissez un mot de passe" required minlength="8" maxlength="20">
-      </div><br>
-      <div class="form-group">
-        <input type="password" class="form-control2" id="exampleInputPassword2" 
-        placeholder="Ressaisissez votre mot de passe" required minlength="8" maxlength="20">
-      </div><br>
+    <button id="continueBtn" type="submit" class="btn btn-primary">Continuer</button>
+    <div><br>
+      <p>Vous n'avez pas de compte ?</p>
 
-      <button id="confirmBtn" type="submit" class="btn btn-primary">Continuer</button>
-      <div><br>
-        <p>Vous possédez déjà un compte ? <a href="#" style="color: rgb(31, 144, 215);">Connexion</a></p>
-      </div>
-    </fieldset>
-  </form>
+      <button id="createBtn" type="submit" class="btn btn-primary"><a href="signup" style="color:rgb(255, 255, 255);">Créer un compte</a></button>
+    </div>
+  </fieldset>
+</form>
 </div>
 
-{% endblock%}
-</html>
+{% endblock %}
