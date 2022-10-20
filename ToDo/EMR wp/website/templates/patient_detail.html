@@ -1,6 +1,81 @@
 {% extends "base.html" %}
-{% block title %}Liste des patients{% endblock %} 
+{% block title %}Historique des consultations{% endblock %} 
 
 {% block content %}
-<h1>En chantier</h1>
+
+<style>
+    .mainpage{
+        display: flex;
+    }
+    .sidenav{
+        flex: 20%;
+        padding: 20px;
+        border-right: 0.1px solid; 
+        border-color: rgb(211, 215, 219);
+    }
+
+    .resultSide{
+        flex: 70%;
+        padding: 5px;
+    }
+    
+    input, label {
+        display:flex;
+        flex-direction:row;
+    }
+
+
+</style>
+
+<div class="mainpage">
+    <div id="sidenavigator" class="sidenav">
+            <section>
+                <div>
+                    <label for="surname">Nom</label>
+                    <input type="text" id="surname" name="surname">
+                </div>
+                <div>
+                    <label for="familyName">Prénom(s)</label>
+                    <input type="text" name="familyname" id="familyName">
+                </div>
+                <br style="clear:both;"/>
+            </section>
+            <section>
+
+                <div>
+                    <label for="birthday">Date de naissance</label>
+                    <input type="text" name="birthday" id="birthday">
+                </div>
+                <div>
+                    <label for="birthplace">Lieu de naissance</label>
+                    <input type="text" name="birthplace" id="birthplace">
+                </div>
+                <br style="clear:both;"/>
+            </section>
+            <section>
+                <div>
+                    <label for="num">Numéro de téléphone</label>
+                    <input type="text" name="num" id="num">
+                </div>
+                <div>
+                    <label for="other">Autre contact</label>
+                    <input type="text" name="other" id="other">
+                </div>
+            </section>
+        
+        <div class="text-center" style="margin-top:3rem;">
+            <hr class="mt-0 mb-2" />
+            <small>Dossier Patient Électronique</small>
+        </div>
+
+    </div>
+        <script src="static/test.js"></script>
+
+        
+    <div class="resultSide">
+        
+        
+
+    </div>
+</div>
 {%endblock%}
