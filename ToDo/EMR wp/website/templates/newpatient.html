@@ -2,5 +2,67 @@
 {% block title %}Nouvel Enregistrement{% endblock %} 
 
 {% block content %}
-<h1>En chantier</h1>
+<style>
+    .mainpage{
+        background-image: radial-gradient(to bottom right, rgb(233, 230, 227),rgb(255,255,255));
+    }
+    .panel{
+        margin: 1rem;
+        border-radius: 10px;   
+    }
+    
+</style>
+
+<div class="mainpage">
+    <div class="panel">
+        <h2> Nouveau Patient</h2>
+        <form action="submit">
+            <div class="bio-info">
+                <h3>Bio</h3>
+                <div class="basic-info">
+                    <input type="text" name="familyName" id="familyName" placeholder="Nom de Famille">
+                    <input type="text" name="surname" id="surname" placeholder="Prénom(s)">
+                    <input type="date" name="birthday" id="birthday" placeholder="Date de naissance">
+                    <input type="text" name="birthplace" id="birthplace" placeholder="Lieu de naissance">
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <div class="basic-info">
+                    <label for="num"> Numéro de téléphone</label>
+                    <input type="tel" name="num" id="num" placeholder="77-612-34-56">
+                    <label for="other">Contact d'urgence</label>
+                    <input type="tel" name="other" id="other" placeholder="76-598-76-54">
+                </div>
+            </div>
+            <div class="health-info">
+                <h3>Info Santé</h3>
+                <label for="female"> Femme</label>
+                <input type="radio" id="female" name="sex" value="Femme" checked>
+                <label for="male">Homme</label>
+                <input type="radio" id="male" name="sex" value="Homme">
+                <label for="bloodtype">Groupe sanguin</label>
+                <select name="bloodtype" id="bloodtype">
+                    <option value="o+">O+</option>
+                    <option value="o+">O-</option>
+                    <option value="o+">A+</option>
+                    <option value="o+">A-</option>
+                    <option value="o+">B+</option>
+                    <option value="o+">B-</option>
+                    <option value="o+">AB</option>
+                </select>
+            </div>
+            <div class="health-info2">
+                <input type="text" name="allergy" id="allergy" placeholder="Allergies">
+                <input type="text" name="sickness" id="sickness" placeholder="Conditions médicales">
+            </div>
+            <div class="description">
+                <label for="patientmemo">Mémo</label>
+                <textarea name="patientmemo" id="patientmemo" cols="30" rows="10"></textarea>
+            </div>
+    </form>
+    </div>
+
+</div>
 {%endblock%}

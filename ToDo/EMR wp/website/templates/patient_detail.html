@@ -4,78 +4,93 @@
 {% block content %}
 
 <style>
-    .mainpage{
-        display: flex;
-    }
+    .mainpage{display:grid;}
     .sidenav{
-        flex: 20%;
         padding: 20px;
         border-right: 0.1px solid; 
-        border-color: rgb(211, 215, 219);
-    }
+        border-color: rgb(211, 215, 219);}
 
-    .resultSide{
-        flex: 70%;
-        padding: 5px;
-    }
+    .resultSide{padding: 5px;}
+    .panel{
+        background-image: linear-gradient(to bottom right, rgb(4, 79, 171),rgb(124, 177, 241));
+        border-radius: 9px;
+        margin: 1rem;
+        color: white;
+        font-weight: bold;
+        height: fit-content;
+        box-shadow: 0px 0px 30px 0.1px #738393;}
     
-    input, label {
-        display:flex;
-        flex-direction:row;
+    .results{box-shadow: 0px 0px 30px 0.1px #738393;
+        margin: 1rem;
+        background-image: linear-gradient(to bottom right, rgb(228, 229, 230),rgb(255, 255, 255));
+        border-radius: 10px;
     }
+    .results h1{ text-align: center;}    
+    .bio-row{flex: 1;margin: 5px;}
+    .name{display: flex;}
+    .birth {display: flex;}
+    .contact{display: flex;}
+    .health{display: flex;}
 
 
 </style>
 
 <div class="mainpage">
-    <div id="sidenavigator" class="sidenav">
-            <section>
-                <div>
-                    <label for="surname">Nom</label>
-                    <input type="text" id="surname" name="surname">
+    <div class="panel">
+        <div id="sidenavigator" class="sidenav">
+                <div class="name">
+                    <div class="bio-row">
+                        <p id="familyName"><span>Nom de famille: </span> Le Nom</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="surname"><span>Prénom(s): </span> Le prénom</p>
+                    </div>
                 </div>
-                <div>
-                    <label for="familyName">Prénom(s)</label>
-                    <input type="text" name="familyname" id="familyName">
-                </div>
-                <br style="clear:both;"/>
-            </section>
-            <section>
 
-                <div>
-                    <label for="birthday">Date de naissance</label>
-                    <input type="text" name="birthday" id="birthday">
+                <div class="birth">
+                    <div class="bio-row">
+                        <p id="birthday"><span>Date de naissance: </span> 13-10-1993</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="birthplace"><span>Lieu de naissance: </span>Dakar</p>
+                    </div>
                 </div>
-                <div>
-                    <label for="birthplace">Lieu de naissance</label>
-                    <input type="text" name="birthplace" id="birthplace">
+
+                <div class="contact">
+                    <div class="bio-row">
+                        <p id="num"><span>Numéro de téléphone: </span>0123456789</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="other"><span>Contact d'urgence: </span>9876543210</p>
+                    </div>
                 </div>
-                <br style="clear:both;"/>
-            </section>
-            <section>
-                <div>
-                    <label for="num">Numéro de téléphone</label>
-                    <input type="text" name="num" id="num">
+
+                <div class="health">
+                    <div class="bio-row">
+                        <p id="sex"><span>Sexe: </span>Masculin</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="bloodtype"><span>Groupe sanguin: </span>O+</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="allergy"><span>Allergies: </span>Crevette</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="sickness"><span>Conditions: </span>Anémie</p>
+                    </div>
                 </div>
-                <div>
-                    <label for="other">Autre contact</label>
-                    <input type="text" name="other" id="other">
-                </div>
-            </section>
+             
+        </div>
         
-        <div class="text-center" style="margin-top:3rem;">
-            <hr class="mt-0 mb-2" />
-            <small>Dossier Patient Électronique</small>
+
+    </div>   
+    <div class="resultSide">
+        
+        <div class="results">
+            <h1> L'historique des consultations sera en dessous</h1>
+
         </div>
 
     </div>
-        <script src="static/test.js"></script>
 
-        
-    <div class="resultSide">
-        
-        
-
-    </div>
-</div>
 {%endblock%}

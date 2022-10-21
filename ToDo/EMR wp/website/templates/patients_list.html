@@ -6,196 +6,296 @@
 <style>
     .mainpage{
         display: flex;
+        background-image: linear-gradient(rgb(231, 234, 233),rgb(255, 255, 255));
     }
     .sidenav{
         flex: 25%;
-        padding: 15px 0;
     }
-
-    .sidenav h2 {
-        padding-left: 8px;
-        }
+    .panel{
+        background-image: linear-gradient(to bottom right, rgb(4, 79, 171),rgb(124, 177, 241));
+        border-radius: 9px;
+        margin: 2rem;
+        color: white;
+        font-weight: bold;
+        height: fit-content;
+        box-shadow: 0px 0px 30px 0.1px #738393;
+    }
         
     .resultSide{
         flex: 70%;
         padding: 5px;
         background-image: linear-gradient(rgb(231, 234, 233),rgb(255, 255, 255));
     }
+    .results{ padding: 5px;}
+    
     .sidenav-menu{
-        list-style-type: none;
-        margin: 0px;    
+        padding-right: 2.5rem;
+        list-style-type: none;   
         overflow-x: hidden;
         overflow-y: auto;
         text-align:justify;
-        height: 300px;
+        max-height: 400px;
     }
     .sidenav-menu li a{
         padding: 12px;
-       display: block;
-        }
-    h2 {
-        text-align: center;
+        display: block;
+        color:blanchedalmond;
         }
 
-    .form-outline{
-        padding: 11px;
-        place-content: center ;
-    }
     .text-center{
-        margin: 1.2rem 3.2rem 2rem 2rem;
+        margin: 0rem 1rem 0rem 1rem;
     }
     .details{
-        margin: auto;
-        width: 65%;
-        padding: 1px;  
-        }
-    .name{display: grid; max-width: 65%;margin: 2rem 0rem 2rem 0rem;}
-    .birth {display: grid; max-width: 65%;margin: 2rem 0rem 2rem 0rem;}
-    .contact{display: grid; max-width: 65%;margin: 2rem 0rem 2rem 0rem;}
-    .memo{display:grid; min-width: 80%; text-align: center;}
-    .accessBtn{
-        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0px 0px 30px 0.1px #738393;
+        background-image: linear-gradient(to bottom right, #cf4f05,#cd8d68);
     }
     
+    .bio-row{
+        flex: 1;
+        margin: 5px;
+    }
+    .details > div{
+        padding: 0.6rem;
+        color: white;
+        font-weight:bold;
+        font-style: italic;
+    }
+    
+    .name{
+        display: flex;
+        border-radius: 10px 10px 0 0;
+    }
+    .birth {
+        
+        display: flex;
+    }
+    .contact{
+        
+        display: flex;}
+        
+    .health{
+        
+        display: flex;}
+        
+    .memo{display:grid; min-width: 80%; text-align: center;
+        
+        border-radius: 0 0 10px 10px;
+    }
+    .accessBtn{
+        padding: 1rem;
+        text-align: center;
+    }
 
+    .dropbtn {
+        background-image: linear-gradient(#025f9d,#3498DB);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: 0px 0px 30px 0.1px #6b99c8;
+      }
+      
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown a:hover {background-color: #ddd;}
+      .show {display: block;}
+      
 </style>
 
 
 <div class="mainpage">
-    <div
-    id="sidenavigator"
-    data-mdb-close-on-esc="false"
-    class="sidenav"
-    data-mdb-hidden="false"
-    data-mdb-position="absolute"
-    data-mdb-focus-trap="false"
-    data-mdb-scroll-container="#scroll-container"
-    role="navigation">
-        <div class="text-center">
-            <h3 class="py-4">Liste des patients</h3>
-            <hr class="m-0" />
-        </div>
-        
-        <ul id="scroll-container" class="sidenav-menu">
-            <div class="input-group rounded my-2">
-                <div class="form-outline">
-                    <input id="search-input-sidenav" type="search" id="form1" class="form-control" placeholder="Rechercher "/>
-                </div>
+    <div class="panel">
+        <div
+        id="sidenavigator"
+        data-mdb-close-on-esc="false"
+        class="sidenav"
+        data-mdb-hidden="false"
+        data-mdb-position="absolute"
+        data-mdb-focus-trap="false"
+        data-mdb-scroll-container="#scroll-container"
+        role="navigation">
+            <div class="text-center">
+                <h3 class="py-4">Liste des patients</h3>
+                <hr class="m-0"/>
             </div>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Fatou N'Diaye</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Demba Lo</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Aminata Dione</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Aisha N'Diaye</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Makhtar Fall</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Idriss Ciss</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Madeleine Diouf</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Mbaye Seck</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Awa Diop</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Fatou Fall</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Rokhaya Gana</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Fatima Sall</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Penda Sow</span>
-            </a>
-            </li>
-            <li class="sidenav-item">
-            <a class="sidenav-link">
-                <i class="far fa-smile pe-3"></i><span>Omar Sow</span>
-            </a>
-            </li>
-        </ul>
-        <div class="text-center" style="min-height: 3rem;">
-            <hr class="mt-0 mb-2" />
-            <small>Dossier Patient Électronique</small>
-        </div>
+            
+            <ul id="scroll-container" class="sidenav-menu">
+                <div class="input-group rounded my-2">
+                    <div class="form-outline">
+                        <input id="search-input-sidenav" type="search" id="form1" class="form-control" placeholder="Rechercher "/>
+                    </div>
+                </div>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Fatou N'Diaye</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Demba Lo</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Aminata Dione</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Aisha N'Diaye</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Makhtar Fall</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Idriss Ciss</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Madeleine Diouf</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Mbaye Seck</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Awa Diop</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Fatou Fall</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Rokhaya Gana</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Fatima Sall</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Penda Sow</span>
+                </a>
+                </li>
+                <li class="sidenav-item">
+                <a class="sidenav-link">
+                    <i class="far fa-smile pe-3"></i><span>Omar Sow</span>
+                </a>
+                </li>
+            </ul>
+            <div class="text-center" style="margin-bottom: 1rem;">
+                <hr class="mt-0 mb-2" />
+                <small >Dossier Patient Électronique</small>
+            </div>
 
+        </div>
     </div>
         <script src="static/test.js"></script>
 
         
     <div class="resultSide">
-        <p style="font-size:xx-large ;"></p>
-        <div class="accessBtn">
-            <button id="historyBtn" type="submit" class="btn-primary"><a href="details" style="color:rgb(255, 255, 255);">Accéder à l'historique des consultations</a></button>
-        </div>
-        <div class="details">
-            <div class="name">
-                <label for="surname">Nom</label>
-                <input type="text" id="surname" name="surname">
-                <label for="familyName">Prénom(s)</label>
-                <input type="text" name="familyname" id="familyName">
-            </div>
-
-            <div class="birth">
-                <label for="birthday">Date de naissance</label>
-                <input type="text" name="birthday" id="birthday">
-                <label for="birthplace">Lieu de naissance</label>
-                <input type="text" name="birthplace" id="birthplace">
-            </div>
-
-            <div class="contact">
-                <label for="num">Numéro de téléphone</label>
-                <input type="text" name="num" id="num">
-                <label for="other">Autre contact</label>
-                <input type="text" name="other" id="other">
-            </div>
-
-            <div class="memo">
-                <label for="patientmemo">Mémo</label>
-                <textarea rows="5" name="patientmemo" id="patientmemo"> </textarea>
-            </div><br>
-        </div>
         
+        <div class="results">
+            <div class="accessBtn">
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">À propos du dossier &#x25BC </button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="details">Historique des consultations</a> 
+                      <a href="#">Modifier le dossier</a>
+                      <a href="#">Supprimer le dossier</a>
+                    </div>
+                </div>     
+            </div>
+            <div class="details">
+                <div class="name">
+                    <div class="bio-row">
+                        <p id="familyName"><span>Nom de famille: </span> Le Nom</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="surname"><span>Prénom(s): </span> Le prénom</p>
+                    </div>
+                </div>
 
+                <div class="birth">
+                    <div class="bio-row">
+                        <p id="birthday"><span>Date de naissance: </span> 13-10-1993</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="birthplace"><span>Lieu de naissance: </span>Dakar</p>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div class="bio-row">
+                        <p id="num"><span>Numéro de téléphone: </span>0123456789</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="other"><span>Contact d'urgence: </span>9876543210</p>
+                    </div>
+                </div>
+
+                <div class="health">
+                    <div class="bio-row">
+                        <p id="sex"><span>Sexe: </span>Masculin</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="bloodtype"><span>Groupe sanguin: </span>O+</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="allergy"><span>Allergies: </span>Crevette</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="sickness"><span>Conditions: </span>Anémie</p>
+                    </div>
+                </div>
+
+                <div class="memo">
+                    <label for="patientmemo">Mémo</label>
+                    <textarea rows="5" name="patientmemo" id="patientmemo"> </textarea>
+                </div>
+            </div>
+        
+        </div>
     </div>
 </div>
 {%endblock%}
