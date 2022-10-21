@@ -4,17 +4,68 @@
 {% block content %}
 <style>
     .mainpage{
-        background-image: radial-gradient(to bottom right, rgb(233, 230, 227),rgb(255,255,255));
+     display: grid;   
     }
-    .panel{
+    .panel2{
+        padding: 1rem;
         margin: 1rem;
         border-radius: 10px;   
+        box-shadow: 0px 0px 30px 0.1px #738393;
+        background-image: linear-gradient(to bottom right, rgb(209, 115, 21),rgb(255,255,255));
     }
+    h2 {
+        text-align: center;
+    }
+    
+
+
+.bio-info > input{ display: block;}
+
+
+
+
+
+
+
+
+
+
+
+.bio-desk h4 {
+    font-size: 15px;
+    font-weight:400;
+}
+
+.bio-desk h4.terques {
+    color: #4CC5CD;
+}
+
+.bio-desk h4.red {
+    color: #e26b7f;
+}
+
+.bio-desk h4.green {
+    color: #97be4b;
+}
+
+.bio-desk h4.purple {
+    color: #caa3da;
+}
+.col-md-6{
+    padding: 1rem;
+    border-color: black;
+    border: 1px solid;   
+}
+.row{
+    padding: 2rem;
+    border: 2px solid;
+    border-color: red;
+}
     
 </style>
 
 <div class="mainpage">
-    <div class="panel">
+    <div class="panel2">
         <h2> Nouveau Patient</h2>
         <form action="submit">
             <div class="bio-info">
@@ -61,6 +112,7 @@
                 <label for="patientmemo">Mémo</label>
                 <textarea name="patientmemo" id="patientmemo" cols="30" rows="10"></textarea>
             </div>
+            <input type="submit" value="Sauvegarder">
     </form>
     </div>
 
