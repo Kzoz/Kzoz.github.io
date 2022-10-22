@@ -28,39 +28,40 @@
     .row#submitBtn{
         place-content: center;
     }
+    .btn-dark{border-radius: 50px;}
     
 </style>
 
 <div class="mainpage">
     <div class="panel">
-        <h2> Nouveau Patient</h2>
-        <form action="submit" class="was-validated">
+        <h2> Mettre à jour les informations</h2>
+        <form action="submit">
+            <div class="row">
+                <div class="col-sm-1">
+                    <h2>Bio</h2>
+                </div>
+                <div class="col-sm-10"></div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-dark" onclick="window.location.href='#'">&#9998</button>
+                </div>
+            </div>
             <div class="row" id="patient-bio">
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="familyName" id="familyName" 
-                        placeholder="Nom de Famille" required minlength="2">
+                        <input type="text" class="form-control" name="familyName" id="familyName" placeholder="Nom de Famille">
                         <label for="familyName">Nom de famille</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="surname" id="surname" 
-                        placeholder="Prénom(s)" required minlength="2">
+                        <input type="text" class="form-control" name="surname" id="surname" placeholder="Prénom(s)">
                         <label for="surname">Prénom(s)</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="date" class="form-control" name="birthday" id="birthday" 
-                        placeholder="Date de naissance" required>
+                        <input type="date" class="form-control" name="birthday" id="birthday" placeholder="Date de naissance">
                         <label for="birthday">Date de naissance</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -73,10 +74,8 @@
             <div class="row" id="patient-contact">
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="tel" class="form-control" name="num" id="num" placeholder="77-612-34-56" required>
+                        <input type="tel" class="form-control" name="num" id="num" placeholder="77-612-34-56">
                         <label for="num"> Numéro de téléphone</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -93,6 +92,15 @@
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <div class="col-sm-1">
+                    <h2>Santé</h2>
+                </div>
+                <div class="col-sm-10"></div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-dark" onclick="window.location.href='#'">&#9998</button>
+                </div>
+            </div>
             <div class="row" id="patient-health">
                 <div class="col-md-4">
                     <div class="health-info">
@@ -142,7 +150,6 @@
                     </div>
                 </div>
             </div>
-            <hr>
             <div class="row" id="patient-memo">
                 <div class="col-md-12">   
                     <div class="form-floating">
@@ -154,10 +161,10 @@
             </div>
             <div class="row" id="submitBtn">
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-primary btn-lg">Sauvegarder</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='patients'">Sauvegarder</button>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/'">Annuler</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='patients'">Annuler</button>
                 </div>
 
             </div>

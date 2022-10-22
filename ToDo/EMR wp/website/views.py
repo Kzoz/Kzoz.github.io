@@ -19,3 +19,7 @@ def listOfPatients():
 @views.route('/details')
 def patientDetails():
     return render_template("/patient_detail.html")
+
+@views.route('/update')
+def updateInfo():
+    return render_template("update_info.html")
