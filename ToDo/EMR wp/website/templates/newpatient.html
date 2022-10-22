@@ -6,7 +6,7 @@
     .mainpage{
      display: grid;   
     }
-    .panel2{
+    .panel{
         padding: 1rem;
         margin: 1rem;
         border-radius: 10px;   
@@ -18,101 +18,114 @@
     }
     
 
-
-.bio-info > input{ display: block;}
-
-
-
-
-
-
-
-
-
-
-
-.bio-desk h4 {
-    font-size: 15px;
-    font-weight:400;
-}
-
-.bio-desk h4.terques {
-    color: #4CC5CD;
-}
-
-.bio-desk h4.red {
-    color: #e26b7f;
-}
-
-.bio-desk h4.green {
-    color: #97be4b;
-}
-
-.bio-desk h4.purple {
-    color: #caa3da;
-}
-.col-md-6{
-    padding: 1rem;
-    border-color: black;
-    border: 1px solid;   
-}
-.row{
-    padding: 2rem;
-    border: 2px solid;
-    border-color: red;
-}
     
 </style>
 
 <div class="mainpage">
-    <div class="panel2">
+    <div class="panel">
         <h2> Nouveau Patient</h2>
         <form action="submit">
-            <div class="bio-info">
-                <h3>Bio</h3>
-                <div class="basic-info">
-                    <input type="text" name="familyName" id="familyName" placeholder="Nom de Famille">
-                    <input type="text" name="surname" id="surname" placeholder="Prénom(s)">
-                    <input type="date" name="birthday" id="birthday" placeholder="Date de naissance">
-                    <input type="text" name="birthplace" id="birthplace" placeholder="Lieu de naissance">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="basic-info">
+                        <input type="text" name="familyName" id="familyName" placeholder="Nom de Famille">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="basic-info">
+                        <input type="text" name="surname" id="surname" placeholder="Prénom(s)">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="basic-info">
+                        <input type="date" name="birthday" id="birthday" placeholder="Date de naissance">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="basic-info">
+                        <input type="text" name="birthplace" id="birthplace" placeholder="Lieu de naissance">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <label for="num"> Numéro de téléphone</label>
+                        <input type="tel" name="num" id="num" placeholder="77-612-34-56">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <label for="other">Contact d'urgence</label>
+                        <input type="tel" name="other" id="other" placeholder="76-598-76-54">
+                    </div>
+                </div>  
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <label for="e-mail">Adresse Email</label>
+                        <input type="email" name="e-mail" id="e-mail" placeholder="abc@gmail.com">
+                    </div>
                 </div>
             </div>
 
-            <div class="contact-info">
-                <h3>Contact</h3>
-                <div class="basic-info">
-                    <label for="num"> Numéro de téléphone</label>
-                    <input type="tel" name="num" id="num" placeholder="77-612-34-56">
-                    <label for="other">Contact d'urgence</label>
-                    <input type="tel" name="other" id="other" placeholder="76-598-76-54">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="health-info">
+                        <label for="female"> Femme</label>
+                        <input type="radio" id="female" name="sex" value="Femme" checked>
+                        <label for="male">Homme</label>
+                        <input type="radio" id="male" name="sex" value="Homme">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="health-info">
+                        <label for="bloodtype">Groupe sanguin</label>
+                        <select name="bloodtype" id="bloodtype">
+                            <option value="o+">O+</option>
+                            <option value="o+">O-</option>
+                            <option value="o+">A+</option>
+                            <option value="o+">A-</option>
+                            <option value="o+">B+</option>
+                            <option value="o+">B-</option>
+                            <option value="o+">AB</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="health-info">
+                        <input type="text" name="allergy" id="allergy" placeholder="Allergies">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="health-info2">
+                        <input type="text" name="sickness" id="sickness" placeholder="Conditions médicales">
+                    </div>
                 </div>
             </div>
-            <div class="health-info">
-                <h3>Info Santé</h3>
-                <label for="female"> Femme</label>
-                <input type="radio" id="female" name="sex" value="Femme" checked>
-                <label for="male">Homme</label>
-                <input type="radio" id="male" name="sex" value="Homme">
-                <label for="bloodtype">Groupe sanguin</label>
-                <select name="bloodtype" id="bloodtype">
-                    <option value="o+">O+</option>
-                    <option value="o+">O-</option>
-                    <option value="o+">A+</option>
-                    <option value="o+">A-</option>
-                    <option value="o+">B+</option>
-                    <option value="o+">B-</option>
-                    <option value="o+">AB</option>
-                </select>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="health-info2">
+                        <div class="description">
+                            <label for="patientmemo">Mémo</label>
+                            <textarea name="patientmemo" id="patientmemo" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>                    
+                </div>
+
             </div>
-            <div class="health-info2">
-                <input type="text" name="allergy" id="allergy" placeholder="Allergies">
-                <input type="text" name="sickness" id="sickness" placeholder="Conditions médicales">
+            <div class="row">
+                <div class="col-sm-2">
+                    <input type="submit" value="Sauvegarder">
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="innerBtn" onclick="window.location.href='/patients'"><span>Annuler</span> </button>
+                </div>
+
             </div>
-            <div class="description">
-                <label for="patientmemo">Mémo</label>
-                <textarea name="patientmemo" id="patientmemo" cols="30" rows="10"></textarea>
-            </div>
-            <input type="submit" value="Sauvegarder">
+            
     </form>
     </div>
 
