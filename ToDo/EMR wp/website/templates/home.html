@@ -6,45 +6,46 @@
 
 <style>
 
-.centrer{align-content: center;
-  margin        : 3rem;
-  padding       : 0;
-  display:flex;
-  place-content: center;
+  .mainpage{
+    padding: 6rem;
+  }
+  .innerBtn{
+    width: 100%;
+    font-size:xx-large;
+    height: 10rem;
+    padding: 1rem;
+    margin: 20px 0 20px 0;
+    border-radius: 20px;
+    background-color:rgb(105, 136, 47);
+  }
+  
+button#bt1.innerBtn:hover{
+background-image: linear-gradient(dodgerblue,rgb(99, 176, 253));
+transition: all 1.3s;
 }
-
-.innerBtn{
-  display: inline-block;
-  margin: 10px;
-  padding: 15px 15px;
-  border-radius: 20px;
-  font-size: xx-large;
-  width: 50%;
-  padding-block: 15%;
-  background-color: rgba(42, 46, 14, 0.26);;
-}
-
-button#bt1.innerBtn:hover {
-  background-color: rgb(109, 126, 71);
+button#bt2.innerBtn:hover{
+  background-image: linear-gradient(rgb(255, 98, 30),rgb(246, 156, 101));
   transition: all 1.3s;
 }
 
-button#bt2.innerBtn:hover {
-  background-color: rgb(173, 169, 30);
-  transition: all 1.3s;
-}
-
-button#bt1 span{
-  padding-top: 20px ;
-}
-
-
-</style>
-
-<div class="centrer">
-    <button type="button" class="innerBtn" id="bt1"  onclick="window.location.href='/patients'"><span>Liste des patients</span> </button>
-    <button type="button" class="innerBtn" id="bt2" onclick="window.location.href='/newpatient'"><span>Enregistrer un nouveau patient</span></button>
-
-</div>
+  </style>
+  
+  
+  
+  <div class="mainpage">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <button type="button" class="innerBtn" id="bt1"  onclick="window.location.href='/patients'"><span>Liste des patients</span> </button>
+        </div>
+        <div class="col-lg-6">
+          <button type="button" class="innerBtn" id="bt2" onclick="window.location.href='/newpatient'"><span>Enregistrer un nouveau patient</span></button>
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  </div>
 
 {%endblock%}
