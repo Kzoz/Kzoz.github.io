@@ -6,6 +6,7 @@
     .mainpage{
      display: grid;   
      background-image: linear-gradient(to bottom right, rgb(227, 227, 227),rgb(255,255,255));
+     padding: 1rem;
     }
     .panel{
         padding: 1rem;
@@ -34,7 +35,7 @@
 <div class="mainpage">
     <div class="panel">
         <h2> Nouveau Patient</h2>
-        <form action="submit" class="was-validated">
+        <form method="POST" class="was-validated">
             <div class="row" id="patient-bio">
                 <div class="col-sm-3">
                     <div class="form-floating">

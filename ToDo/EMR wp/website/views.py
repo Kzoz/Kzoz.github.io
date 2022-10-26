@@ -1,6 +1,4 @@
-import imp
-from pydoc import render_doc
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 views = Blueprint('views', __name__)
 
@@ -10,7 +8,7 @@ def home():
 
 @views.route('/newpatient')
 def newpatient():
-    return render_template('newpatient.html')
+    return render_template('newpatient.html', methods=['GET','POST'])
 
 @views.route('/patients')
 def listOfPatients():
@@ -22,4 +20,4 @@ def patientDetails():
 
 @views.route('/update')
 def updateInfo():
-    return render_template("update_info.html")
+    return render_template("update_info.html", methods=['GET','POST'])

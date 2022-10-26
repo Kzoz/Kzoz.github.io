@@ -31,28 +31,29 @@
       <legend>Créer un nouveau compte</legend>
 
        <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" id="name" 
+        <input type="text" class="form-control" id="name"  name="name"
         placeholder="Nom et Prénom(s)" required minlength="2">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">@</span>
-        <input type="email" class="form-control" id="email" aria-describedby="inputGroup-sizing-default" 
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="inputGroup-sizing-default" 
         placeholder="email" required >
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">&#128273</span>
-        <input type="password" class="form-control" id="userpass"
+        <input type="password" class="form-control" id="password" name="password"
         aria-describedby="inputGroup-sizing-default" placeholder="Saisissez un mot de passe"
-        required minlength="8" maxlength="20">
+        required >
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">&#128273</span>
-        <input type="password" class="form-control" id="userpass2" 
+        <input type="password" class="form-control" id="password2" name="password"  
         aria-describedby="inputGroup-sizing-default" placeholder="Ressaisissez un mot de passe"
-        required minlength="8" maxlength="20">
+        required >
+        
       </div>
 
       <div class="form-check form-switch">
@@ -72,8 +73,8 @@
 </div>
 <script>
   function myFunction() {
-    var x = document.getElementById('userpass');
-    var y = document.getElementById('userpass2');
+    var x = document.getElementById('password');
+    var y = document.getElementById('password2');
     if (y.type === "password") {
       y.type = "text";
       x.type = "text";
