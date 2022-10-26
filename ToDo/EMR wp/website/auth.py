@@ -24,9 +24,11 @@ def sign_up():
         password = request.form.get("password")
         password2 = request.form.get("password2")
         if len(password) < 8 or len(password) > 20:
-            flash('Le mot de passe doit être entre 8 et 20 lettres', category='error')
+            flash('Le mot de passe doit être entre 8 et 20 lettres.', category='error')
         elif len(password2) < 8 or len(password2) > 20:
-            flash('Le mot de passe doit être entre 8 et 20 lettres', category='error')
+            flash('Le mot de passe doit être entre 8 et 20 lettres.', category='error')
+        elif password != password2:
+            flash('Les mots de passe saisis sont différents.',category='error')
         else:
             flash('Votre compte a été créé!', category='success')
     return render_template("sign_up.html")

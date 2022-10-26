@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 def create_ws_app():
     app = Flask(__name__)
+    app.secret_key = 'svbjn67dcs'
     app.config['SECRET KEY'] = '77w7wldfwp[i3'
 
     from .views import views
