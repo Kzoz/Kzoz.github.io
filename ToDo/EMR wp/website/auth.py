@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import  db
-
+from flask_login import login_required, login_user, logout_user, current_user
 
 
 auth = Blueprint('auth', __name__)
@@ -17,17 +17,21 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Bienvenue!', category=';success')
+                login_user(user, remember=True)#the currently logged in user
                 return redirect(url_for('views.home'))
             else:
                 flash('Mot de passe incorrect. Veuillez essayer à nouveau', category='error')
         else:
             flash("Ce compte n\'existe pas.", category='error')
 
-    return render_template('login.html')
+    return render_template('login.html', user=current_user)
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return render_template('home.html')
+    logout_user()
+    return redirect(url_for('auth.login'))
+
 
 @auth.route('/signup', methods=['GET','POST'])
 def sign_up():
