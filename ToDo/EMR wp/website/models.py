@@ -1,13 +1,22 @@
 from . import db
 from flask_login import UserMixin
+import datetime
+
+
+class MyDateTime(db.TypeDecorator):
+    impl = db.DateTime
+    def process_bind_param(self, value, dialect):
+        if type(value) is str:
+            return datetime.datetime.strptime(value, '%Y-%m-%d').date()
+        return value
 
 class Record(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey("patient.id"))
-    date = db.Column(db.Date)
+    date = db.Column(MyDateTime)
     notes = db.Column(db.String(10000))
     drugs = db.Column(db.String(2000))
-    next_appo = db.Column(db.Date)
+    next_appo = db.Column(MyDateTime)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,14 +28,15 @@ class Patient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     familyname = db.Column(db.String(150), nullable=False)
     firstname = db.Column(db.String(150), nullable=False)
-    dob = db.Column(db.Date, nullable=False)
+    dob = db.Column(MyDateTime)
     pob = db.Column(db.String(64))
-    num = db.Column(db.Enum, nullable=False)
+    num = db.Column(db.Integer, nullable=False)
     email = db.Column(db.String(100))
-    emergency = db.column(db.String(100))
+    emergency = db.Column(db.Integer)
     sex = db.Column(db.String(12))
     bloodtype = db.Column(db.String(12))
     allergy = db.Column(db.String(1000))
     conditions = db.Column(db.String(1000))
     notes = db.Column(db.String(10000))
     consultation = db.relationship('Record')
+

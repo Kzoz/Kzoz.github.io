@@ -10,7 +10,7 @@
         border-right: 0.1px solid; 
         border-color: rgb(211, 215, 219);}
 
-    .resultSide{padding: 5px;}
+    .resultSide{padding: 2rem;}
     .panel{
         background-image: linear-gradient(to bottom right, rgb(4, 79, 171),rgb(124, 177, 241));
         border-radius: 9px;
@@ -31,6 +31,9 @@
     .birth {display: flex;}
     .contact{display: flex;}
     .health{display: flex;}
+    #history{border:0.4px solid; border-color: aqua;
+        box-shadow: 0px 0px 10px 0.1px #738393;padding: 10px;
+        margin: 10px 0 10px 0;border-radius: 20px;}
 
 
 </style>
@@ -40,43 +43,43 @@
         <div id="sidenavigator" class="sidenav">
                 <div class="name">
                     <div class="bio-row">
-                        <p id="familyName"><span>Nom de famille: </span> Le Nom</p>
+                        <p id="familyName"><span>Nom de famille: </span> {{currentPatient.familyname}}</p>
                     </div>
                     <div class="bio-row">
-                        <p id="surname"><span>Prénom(s): </span> Le prénom</p>
+                        <p id="surname"><span>Prénom(s): </span> {{currentPatient.firstname}}</p>
                     </div>
                 </div>
 
                 <div class="birth">
                     <div class="bio-row">
-                        <p id="birthday"><span>Date de naissance: </span> 13-10-1993</p>
+                        <p id="birthday"><span>Date de naissance: </span> {{currentPatient.dob}}</p>
                     </div>
                     <div class="bio-row">
-                        <p id="birthplace"><span>Lieu de naissance: </span>Dakar</p>
+                        <p id="birthplace"><span>Lieu de naissance: </span>{{currentPatient.pob}}</p>
                     </div>
                 </div>
 
                 <div class="contact">
                     <div class="bio-row">
-                        <p id="num"><span>Numéro de téléphone: </span>0123456789</p>
+                        <p id="num"><span>Numéro de téléphone: </span>{{currentPatient.num}}</p>
                     </div>
                     <div class="bio-row">
-                        <p id="other"><span>Contact d'urgence: </span>9876543210</p>
+                        <p id="other"><span>Contact d'urgence: </span>{{currentPatient.emergency}}</p>
                     </div>
                 </div>
 
                 <div class="health">
                     <div class="bio-row">
-                        <p id="sex"><span>Sexe: </span>Masculin</p>
+                        <p id="sex"><span>Sexe: </span>{{currentPatient.sex}}</p>
                     </div>
                     <div class="bio-row">
-                        <p id="bloodtype"><span>Groupe sanguin: </span>O+</p>
+                        <p id="bloodtype"><span>Groupe sanguin: </span>{{currentPatient.bloodtype}}</p>
                     </div>
                     <div class="bio-row">
-                        <p id="allergy"><span>Allergies: </span>Crevette</p>
+                        <p id="allergy"><span>Allergies: </span>{{currentPatient.allergy}}</p>
                     </div>
                     <div class="bio-row">
-                        <p id="sickness"><span>Conditions: </span>Anémie</p>
+                        <p id="sickness"><span>Conditions: </span>{{currentPatient.conditions}}</p>
                     </div>
                 </div>
              
@@ -85,12 +88,72 @@
 
     </div>   
     <div class="resultSide">
-        
-        <div class="results">
-            <h1> L'historique des consultations sera en dessous</h1>
+        <form method="POST">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="num"> Date</label>
+                    <input type="date" name="notedate" id="notedate" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <label for="num"> Diagnostic</label>
+                    <textarea type="text" name="note" id="note" class="form-control"> </textarea>
+                </div>
+                <div class="col-sm-3">
+                    <label for="num"> Prescription</label>
+                    <textarea type="text" name="drugs" id="drugs" class="form-control"> </textarea>
+                    
+                </div>
+                <div class="col-sm-2">
+                    <label for="num"> Prochain Rendez-vous</label>
+                    <input type="date" name="nextappo" id="nextappo" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success">Ajouter</button>
+                </div>
+            </div>
+        </form> <br>
 
+        <div id="consultation">
+        {% for item in currentPatient.consultation[::-1] %}
+        <div class="row" id="history">
+            <div class="col-sm-2">
+                <label for="date"> Date</label>
+                <p id="date">{{item.date}}</p>
+            </div>
+            <div class="col-sm-3">
+                <label for="note"> Diagnostic</label>
+                <p id="note">{{item.notes}}</p>
+            </div>
+            <div class="col-sm-3">
+                <label for="drugs"> Prescription</label>
+                <p id="drugs">{{item.drugs}} </p>
+            </div>
+            <div class="col-sm-2">
+                <label for="nextappo"> Prochain rendez-vous</label>
+                <p id="nextappo">{{item.next_appo}}</p>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-danger" onclick="deleteHistory({{item.id}})">Supprimer</button>
+            </div>
+        </div>
+        {%endfor%}
         </div>
 
     </div>
+</div>
 
 {%endblock%}
+<!--
+<div class="col-sm-3">
+    <input type="date" name="notedate" id="notedate">
+</div>
+<div class="col-sm-3">
+    <input type="text" name="note" id="note">
+</div>
+<div class="col-sm-3">
+    <input type="text" name="drugs" id="drugs">
+</div>
+<div class="col-sm-3">
+    <input type="date" name="nextappo" id="nextappo">
+</div>
+-->

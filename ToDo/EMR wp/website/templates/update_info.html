@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Nouvel Enregistrement{% endblock %} 
+{% block navigator%} 
+<li class="nav-item">
+    <a class="nav-link active" href="patients">Liste des patients
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="newpatient">Nouveau Patient
+    </a>
+  </li>
+{% endblock %}
 
 {% block content %}
 <style>
@@ -49,25 +59,26 @@
             <div class="row" id="patient-bio">
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="familyName" id="familyName" placeholder="Nom de Famille">
+                        <input type="text" class="form-control" name="familyName" id="familyName" placeholder="Nom de Famille" value="{{currentPatient.familyname}}">
                         <label for="familyName">Nom de famille</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="surname" id="surname" placeholder="Prénom(s)">
+                        <input type="text" class="form-control" name="surname" id="surname" placeholder="Prénom(s)"value="{{currentPatient.firstname}}">
                         <label for="surname">Prénom(s)</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="date" class="form-control" name="birthday" id="birthday" placeholder="Date de naissance">
+                        <input type="date" class="form-control" name="birthday" id="birthday" 
+                        placeholder="Date de naissance" value="{{currentPatient.dob}}">
                         <label for="birthday">Date de naissance</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="birthplace" id="birthplace" placeholder="Lieu de naissance">
+                        <input type="text" class="form-control" name="birthplace" id="birthplace" placeholder="Lieu de naissance" value="{{currentPatient.pob}}">
                         <label for="birthplace">Lieu de naissance</label>
                     </div>
                 </div>
@@ -75,20 +86,20 @@
             <div class="row" id="patient-contact">
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="tel" class="form-control" name="num" id="num" placeholder="77-612-34-56">
+                        <input type="tel" class="form-control" name="num" id="num" placeholder="77-612-34-56" value="{{currentPatient.num}}">
                         <label for="num"> Numéro de téléphone</label>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="tel" class="form-control" name="other" id="other" placeholder="76-598-76-54">
-                        <label for="other">Contact d'urgence</label>
+                        <input type="tel" class="form-control" name="emergency" id="emergency" placeholder="76-598-76-54" value="{{currentPatient.emergency}}">
+                        <label for="emergency">Contact d'urgence</label>
                     </div>
                 </div>  
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="email" class="form-control" name="e-mail" id="e-mail" placeholder="abc@gmail.com">
-                        <label for="e-mail">Adresse Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com" value="{{currentPatient.email}}">
+                        <label for="email">Adresse Email</label>
                     </div>
                 </div>
             </div>
@@ -123,7 +134,7 @@
                     <label class="radio-inline control-label">Sexe</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sex" id="female" value="Femme" checked>
+                        <input class="form-check-input" type="radio" name="sex" id="female" value="{{currentPatient.sex}}" checked>
                         <label class="form-check-label" for="female">
                         Femme
                         </label>
@@ -138,7 +149,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Allergies" id="Allergy"></textarea>
+                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" value="{{currentPatient.allergy}}"></textarea>
                         <label for="floatingTextarea">Allergie à: </label>
                     </div>
                 </div>
@@ -146,7 +157,7 @@
             <div class="row" id="patient-condition">
                 <div class="col-sm-12">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness"></textarea>
+                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" value="{{currentPatient.conditions}}"></textarea>
                         <label for="floatingTextarea">Condition médicale du patient (ex: Diabète..)</label>
                     </div>
                 </div>
@@ -154,7 +165,7 @@
             <div class="row" id="patient-memo">
                 <div class="col-md-12">   
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Notes" id="memo" style="height: 100px"></textarea>
+                        <textarea class="form-control" placeholder="Notes" id="memo" style="height: 100px" name="memo">{{currentPatient.notes}}</textarea>
                         <label for="floatingTextarea2">Notes concernant le patient</label>
                     </div>                 
                 </div>
@@ -162,10 +173,10 @@
             </div>
             <div class="row" id="submitBtn">
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='patients'">Sauvegarder</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Sauvegarder</button>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='patients'">Annuler</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/patients/{{currentPatient.id}}'">Annuler</button>
                 </div>
 
             </div>

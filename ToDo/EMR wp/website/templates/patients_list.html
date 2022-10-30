@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Liste des patients{% endblock %} 
-
+{% block navigator%} 
+<li class="nav-item">
+    <a class="nav-link active" href="/newpatient">Nouveau Patient
+    </a>
+  </li>
+{% endblock %}
 {% block content %}
 
 <style>
@@ -144,76 +149,22 @@
                                 <input id="search-input-sidenav" type="search" id="form1" class="form-control" placeholder="Rechercher "/>
                             </div>
                         </div>
+                        
                         <li class="sidenav-item">
                         <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Fatou N'Diaye</span>
+                            <i class="far fa-smile pe-3"></i><span>Patient 0</span>
                         </a>
-                        </li>
+                                        
+                        {% for people in patient%}
+                        
                         <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Demba Lo</span>
-                        </a>
+                            <a class="sidenav-link" href="{{people.id}}">
+                                <i class="far fa-smile pe-3"></i><span >{{ people.firstname}} {{people.familyname}}</span>
+                            </a>
                         </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Aminata Dione</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Aisha N'Diaye</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Makhtar Fall</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Idriss Ciss</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Madeleine Diouf</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Mbaye Seck</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Awa Diop</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Fatou Fall</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Rokhaya Gana</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Fatima Sall</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Penda Sow</span>
-                        </a>
-                        </li>
-                        <li class="sidenav-item">
-                        <a class="sidenav-link">
-                            <i class="far fa-smile pe-3"></i><span>Omar Sow</span>
-                        </a>
-                        </li>
+                        {%endfor%}
+                        
+
                     </ul>
                     <div class="text-center" style="margin-bottom: 1rem;">
                         <hr class="mt-0 mb-2" />
@@ -227,8 +178,8 @@
                     <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn"> &#9881 À propos du dossier &#x25BC </button>
                         <div id="myDropdown" class="dropdown-content">
-                          <a href="details">Historique des consultations</a> 
-                          <a href="update">Modifier le dossier</a>
+                          <a href="details/{{current_patient.id}}">Historique des consultations</a> 
+                          <a href="update/{{current_patient.id}}">Modifier le dossier</a>
                           <a href="#">Supprimer le dossier</a>
                         </div>
                     </div>     
@@ -237,33 +188,33 @@
                     <div class="col-md-4" style="background-image: linear-gradient(to bottom left,rgb(2, 91, 179),rgb(106, 181, 255));">
                         <div class="name">
                             <div class="bio-row">
-                                <p id="familyName"><span style="font-weight:bold ;">Nom de famille: </span> Le Nom</p>
+                                <p id="familyName"><span style="font-weight:bold ;">Nom de famille: </span>{{current_patient.familyname}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="surname"><span style="font-weight:bold ;">Prénom(s): </span> Le prénom</p>
+                                <p id="surname"><span style="font-weight:bold ;">Prénom(s): </span>{{current_patient.firstname}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3" style="background-image: linear-gradient( #ff7b2e,#ebad89);">
                         <div class="birth">
                             <div class="bio-row">
-                                <p id="birthday"><span style="font-weight:bold ;">Date de naissance: </span> 13-10-1993</p>
+                                <p id="birthday"><span style="font-weight:bold ;">Date de naissance: </span> {{current_patient.dob}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="birthplace"><span style="font-weight:bold ;">Lieu de naissance: </span>Dakar</p>
+                                <p id="birthplace"><span style="font-weight:bold ;">Lieu de naissance: </span>{{current_patient.pob}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4" style="background-color:white; color:rgb(101, 97, 97);">
                         <div class="contact">
                             <div class="bio-row">
-                                <p id="num"><span style="font-weight:bold ;">Numéro de téléphone: </span>0123456789</p>
+                                <p id="num"><span style="font-weight:bold ;">Numéro de téléphone: </span>{{current_patient.num}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="other"><span style="font-weight:bold ;">Email: </span>abc@gmail.com</p>
+                                <p id="other"><span style="font-weight:bold ;">Email: </span>{{current_patient.email}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="other"><span style="font-weight:bold ;">Contact d'urgence: </span>9876543210</p>
+                                <p id="other"><span style="font-weight:bold ;">Contact d'urgence: </span>{{current_patient.emergency}}</p>
                             </div>
                         </div>
                     </div>
@@ -273,13 +224,13 @@
                     <div class="col-md-12" style="background-color:white; color:rgb(101, 97, 97);">
                         <div class="health">
                             <div class="bio-row">
-                                <p id="sex"><span style="font-weight:bold ;">Sexe: </span>Masculin</p>
+                                <p id="sex"><span style="font-weight:bold ;">Sexe: </span>{{current_patient.sex}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="bloodtype"><span style="font-weight:bold ;">Groupe sanguin: </span>O+</p>
+                                <p id="bloodtype"><span style="font-weight:bold ;">Groupe sanguin: </span>{{current_patient.bloodtype}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="allergy"><span style="font-weight:bold ;">Allergies: </span>Crevette</p>
+                                <p id="allergy"><span style="font-weight:bold ;">Allergies: </span>{{current_patient.allergy}}</p>
                             </div>
                         </div>
                     </div>
@@ -287,13 +238,13 @@
                 <div class="row" style="place-content:center ;">
                     <div class="col-md-5">
                         <div class="bio-row">
-                            <p id="sickness"><span>Conditions: </span>Anémie</p>
+                            <p id="sickness"><span>Conditions: </span>{{current_patient.conditions}}</p>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="memo">
                             <label for="patientmemo">Mémo</label>
-                            <textarea rows="5" name="patientmemo" id="patientmemo"> </textarea>
+                            <textarea rows="5" name="patientmemo" id="patientmemo">{{current_patient.notes}}</textarea>
                         </div>
                     </div>
 
