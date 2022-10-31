@@ -4,7 +4,7 @@
 <li class="nav-item">
     <a class="nav-link active" href="/newpatient">Nouveau Patient
     </a>
-  </li>
+</li>
 {% endblock %}
 {% block content %}
 
@@ -149,19 +149,21 @@
                                 <input id="search-input-sidenav" type="search" id="form1" class="form-control" placeholder="Rechercher "/>
                             </div>
                         </div>
-                        
+                       <!--
                         <li class="sidenav-item">
                         <a class="sidenav-link">
                             <i class="far fa-smile pe-3"></i><span>Patient 0</span>
                         </a>
+                        --> 
                                         
                         {% for people in patient%}
-                        
+                        {% if people.id != 0%}
                         <li class="sidenav-item">
                             <a class="sidenav-link" href="{{people.id}}">
                                 <i class="far fa-smile pe-3"></i><span >{{ people.firstname}} {{people.familyname}}</span>
                             </a>
                         </li>
+                        {%endif%}
                         {%endfor%}
                         
 
@@ -178,9 +180,17 @@
                     <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn"> &#9881 À propos du dossier &#x25BC </button>
                         <div id="myDropdown" class="dropdown-content">
-                          <a href="details/{{current_patient.id}}">Historique des consultations</a> 
-                          <a href="update/{{current_patient.id}}">Modifier le dossier</a>
-                          <a href="#">Supprimer le dossier</a>
+                            {% if current_patient.id == 0%}
+                            <a href="">Historique des consultations</a> 
+                            <a href="">Modifier le dossier</a>
+                            <button type="submit" class="btn btn-danger " disabled>Supprimer le dossier</button>
+                            {%else%}
+                            <a href="/details/{{current_patient.id}}">Historique des consultations</a> 
+                            <a href="/update/{{current_patient.id}}">Modifier le dossier</a>
+                            <form method="POST"></form>
+                            <button type="submit" class="btn btn-danger ">Supprimer le dossier</button>
+                            </form> 
+                            {%endif%}                                                   
                         </div>
                     </div>     
                 </div>
@@ -258,5 +268,9 @@
         </div>
     </div>
 </div>
-<script src="static/test.js"></script>
+<script src="../static/test.js"></script>
+<!--<<script
+type="text/javascript"
+src="{{ url_for('static', filename='index.js') }}"
+></script>-->
 {%endblock%}

@@ -44,7 +44,7 @@ def newpatient():
         return redirect(url_for('views.home'))
     return render_template('newpatient.html', methods=['GET','POST'], user=current_user)
 
-@views.route('/patients/<int:patientId>')
+@views.route('/patients/<int:patientId>', methods=['GET','POST'])
 @login_required
 def listOfPatients(patientId):
     patient = Patient.query.all()
@@ -53,6 +53,10 @@ def listOfPatients(patientId):
     patient_id = patientId
     
     current_patient=Patient.query.get_or_404(patientId)
+    if request.method == 'POST':
+        db.session.delete(current_patient)
+        db.session.commit()
+        return redirect(url_for('views.listOfPatients',  patientId=0))
     #current_patient = Patient.query.get_or_404(patient_id)
     #current_patient = request.form.get('sidenavi')
     #print("This is the current patient: ",current_patient)

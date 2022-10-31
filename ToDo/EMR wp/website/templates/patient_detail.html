@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Historique des consultations{% endblock %} 
-
+{% block navigator%} 
+<li class="nav-item">
+    <a class="nav-link active" href="/patients/{{currentPatient.id}}">Retourner à la liste
+    </a>
+</li>
+{% endblock %}
 {% block content %}
 
 <style>
