@@ -7,16 +7,19 @@ class MyDateTime(db.TypeDecorator):
     impl = db.DateTime
     def process_bind_param(self, value, dialect):
         if type(value) is str:
-            return datetime.datetime.strptime(value, '%Y-%m-%d').date()
+            print(value, type(value))
+            x= datetime.datetime.strptime(value, '%Y-%m-%d').date()
+            print(x,type(x))
+            return x.strftime('%d-%m-%Y')
         return value
 
 class Record(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey("patient.id"))
-    date = db.Column(MyDateTime)
+    date = db.Column(db.Date)
     notes = db.Column(db.String(10000))
     drugs = db.Column(db.String(2000))
-    next_appo = db.Column(MyDateTime)
+    next_appo = db.Column(db.Date)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,7 +31,8 @@ class Patient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     familyname = db.Column(db.String(150), nullable=False)
     firstname = db.Column(db.String(150), nullable=False)
-    dob = db.Column(MyDateTime)
+    #dob = db.Column(MyDateTime)
+    dob = db.Column(db.Date)
     pob = db.Column(db.String(64))
     num = db.Column(db.Integer, nullable=False)
     email = db.Column(db.String(100))

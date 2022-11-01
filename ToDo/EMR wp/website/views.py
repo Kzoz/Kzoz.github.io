@@ -1,4 +1,4 @@
-import re
+import datetime
 from .models import Patient, Record
 from flask import Blueprint, render_template, request,redirect, url_for, flash
 from flask_login import login_required, current_user
@@ -23,7 +23,9 @@ def newpatient():
     if request.method=='POST':
         familyname = request.form.get('familyName')
         surname = request.form.get('surname')
-        birthday = request.form.get('birthday')
+        birthday = datetime.datetime.strptime(
+                     request.form['birthday'],
+                     '%Y-%m-%d').date()
         birthplace = request.form.get('birthplace')
         num = request.form.get('num')
         email = request.form.get('email')
@@ -33,7 +35,7 @@ def newpatient():
         allergy = request.form.get('allergy')
         sickness = request.form.get('sickness')
         memo = request.form.get('memo')
-
+        print(birthday, type(birthday),bday,type(bday))
         new_patient = Patient(familyname = familyname, firstname=surname, dob=birthday,
         pob=birthplace, num=num, email=email, emergency=emergency, sex=sex, bloodtype=bloodtype,
         allergy=allergy, conditions=sickness, notes=memo)
@@ -48,7 +50,6 @@ def newpatient():
 @login_required
 def listOfPatients(patientId):
     patient = Patient.query.all()
-    print(patient)
     global patient_id
     patient_id = patientId
     
@@ -58,8 +59,6 @@ def listOfPatients(patientId):
         db.session.commit()
         return redirect(url_for('views.listOfPatients',  patientId=0))
     #current_patient = Patient.query.get_or_404(patient_id)
-    #current_patient = request.form.get('sidenavi')
-    #print("This is the current patient: ",current_patient)
     return render_template('patients_list.html', user=current_user,patient=patient, current_patient=current_patient)
 
 
@@ -75,18 +74,19 @@ def patientDetails(patientId):
     #patient = Patient.query.all()
 
     if request.method=='POST':
-        date = request.form.get('notedate')
+        date = datetime.datetime.strptime(
+                     request.form['birthday'],
+                     '%Y-%m-%d').date()
         notes = request.form.get('note')
         drugs = request.form.get('drugs')
-        next_appo = request.form.get('nextappo')
+        next_appo = datetime.datetime.strptime(
+                     request.form['birthday'],
+                     '%Y-%m-%d').date()
 
-        
         new_consultation = Record(patient_id=patientId, date=date, notes=notes, drugs=drugs, next_appo=next_appo)
         db.session.add(new_consultation)
         db.session.commit()
         return redirect(url_for('views.patientDetails', patientId=currentPatient.id))
-
-        
     return render_template("/patient_detail.html", user=current_user,  currentPatient=currentPatient)
 
 
@@ -98,16 +98,16 @@ def updateInfo(patientId):
     if current_user.email not in superUsers:
         flash('Vous n\'avez pas accés à cette fonctionnalité.',category='error')
         return redirect(url_for('views.listOfPatients'))
-
     global patient_id
     patientId = patient_id
-    
     currentPatient = Patient.query.get_or_404(patientId)
 
     if request.method=='POST':
         currentPatient.familyname = request.form.get('familyName')
         currentPatient.firstname = request.form.get('surname')
-        currentPatient.dob = request.form.get('birthday')
+        currentPatient.dob = datetime.datetime.strptime(
+                     request.form['birthday'],
+                     '%Y-%m-%d').date()
         currentPatient.pob = request.form.get('birthplace')
         currentPatient.num = request.form.get('num')
         currentPatient.email = request.form.get('email')
@@ -120,8 +120,7 @@ def updateInfo(patientId):
 
         db.session.add(currentPatient)
         db.session.commit()
-        return redirect(url_for('views.home'))
         flash('Les informations du patient ont été modifié.',category='success')
-
+        return redirect(url_for('views.listOfPatients', patientId=currentPatient.id))
 
     return render_template("update_info.html", methods=['GET','POST'],user=current_user,currentPatient=currentPatient)
