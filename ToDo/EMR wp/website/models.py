@@ -7,10 +7,8 @@ class MyDateTime(db.TypeDecorator):
     impl = db.DateTime
     def process_bind_param(self, value, dialect):
         if type(value) is str:
-            print(value, type(value))
             x= datetime.datetime.strptime(value, '%Y-%m-%d').date()
-            print(x,type(x))
-            return x.strftime('%d-%m-%Y')
+            return x
         return value
 
 class Record(db.Model):

@@ -1,8 +1,11 @@
+from cgi import print_arguments
+import json
 import datetime
 from .models import Patient, Record
-from flask import Blueprint, render_template, request,redirect, url_for, flash
+from flask import Blueprint, render_template, request,redirect, url_for, flash, jsonify
 from flask_login import login_required, current_user
 from . import db
+
 
 views = Blueprint('views', __name__)
 
@@ -17,6 +20,7 @@ def home():
 @views.route('/newpatient', methods=['GET','POST'])
 @login_required
 def newpatient():
+    allPatients = Patient.query.all()
     if current_user.email not in superUsers:
         flash('Vous n\'avez pas accés à cette fonctionnalité.',category='error')
         return redirect(url_for('views.home'))
@@ -35,15 +39,19 @@ def newpatient():
         allergy = request.form.get('allergy')
         sickness = request.form.get('sickness')
         memo = request.form.get('memo')
-        print(birthday, type(birthday),bday,type(bday))
+       
         new_patient = Patient(familyname = familyname, firstname=surname, dob=birthday,
         pob=birthplace, num=num, email=email, emergency=emergency, sex=sex, bloodtype=bloodtype,
         allergy=allergy, conditions=sickness, notes=memo)
+
+
    
         db.session.add(new_patient)
         db.session.commit()
+        latestPatient = allPatients[-1].id
+        
         flash('Un nouveau patient a été ajouté.', category='success')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('views.listOfPatients',  patientId=latestPatient))
     return render_template('newpatient.html', methods=['GET','POST'], user=current_user)
 
 @views.route('/patients/<int:patientId>', methods=['GET','POST'])
@@ -75,12 +83,12 @@ def patientDetails(patientId):
 
     if request.method=='POST':
         date = datetime.datetime.strptime(
-                     request.form['birthday'],
+                     request.form['notedate'],
                      '%Y-%m-%d').date()
         notes = request.form.get('note')
         drugs = request.form.get('drugs')
         next_appo = datetime.datetime.strptime(
-                     request.form['birthday'],
+                     request.form['nextappo'],
                      '%Y-%m-%d').date()
 
         new_consultation = Record(patient_id=patientId, date=date, notes=notes, drugs=drugs, next_appo=next_appo)
@@ -97,7 +105,7 @@ def updateInfo(patientId):
 
     if current_user.email not in superUsers:
         flash('Vous n\'avez pas accés à cette fonctionnalité.',category='error')
-        return redirect(url_for('views.listOfPatients'))
+        return redirect(url_for('views.listOfPatients',  patientId=0))
     global patient_id
     patientId = patient_id
     currentPatient = Patient.query.get_or_404(patientId)
@@ -124,3 +132,19 @@ def updateInfo(patientId):
         return redirect(url_for('views.listOfPatients', patientId=currentPatient.id))
 
     return render_template("update_info.html", methods=['GET','POST'],user=current_user,currentPatient=currentPatient)
+
+
+
+@views.route('/delete-history', methods=['POST'])
+def deleteHistory():
+    global patient_id
+    print('Here it is',patient_id)
+    history = json.loads(request.data)
+    historyId = history['historyId']
+    history = Record.query.get(historyId)
+    print(history)
+    if history:
+        if history.patient_id == patient_id:
+            db.session.delete(history)
+            db.session.commit()
+    return jsonify({})
