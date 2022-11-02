@@ -2,10 +2,12 @@
 {% block title %}Nouvel Enregistrement{% endblock %} 
 {% block navigator%} 
 <li class="nav-item">
-    <a class="nav-link active" href="patients/1">Liste des patients
+    <a class="nav-link active" href="/patients/{{currentPatient.id}}">Retourner à la liste
     </a>
   </li>
+
 {% endblock %}
+
 {% block content %}
 <style>
     .mainpage{
@@ -34,44 +36,48 @@
     .row#submitBtn{
         place-content: center;
     }
+    .btn-dark{border-radius: 50px;}
     
 </style>
 
 <div class="mainpage">
     <div class="panel">
-        <h2> Nouveau Patient</h2>
-        <form method="POST" class="was-validated">
+        <h2> Mettre à jour les informations</h2>
+        <form method="POST">
+            <div class="row">
+                <div class="col-sm-1">
+                    <h2>Bio</h2>
+                </div>
+                <div class="col-sm-10"></div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-dark" onclick="window.location.href='#'">&#9998</button>
+                </div>
+            </div>
             <div class="row" id="patient-bio">
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="surname" id="surname" 
-                        placeholder="Prénom(s)" required minlength="2">
-                        <label for="surname">Prénom(s)</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
+                        <input type="text" class="form-control" name="familyName" id="familyName" onkeydown="return /[a-z]/i.test(event.key)"
+                        placeholder="Nom de Famille" value="{{currentPatient.familyname}}">
+                        <label for="familyName">Nom de famille</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="familyName" id="familyName" 
-                        placeholder="Nom de Famille" required minlength="2">
-                        <label for="familyName">Nom de famille</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
+                        <input type="text" class="form-control" name="surname" id="surname" onkeydown="return /[a-z]/i.test(event.key)"
+                        placeholder="Prénom(s)"value="{{currentPatient.firstname}}">
+                        <label for="surname">Prénom(s)</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
                         <input type="date" class="form-control" name="birthday" id="birthday" 
-                        placeholder="Date de naissance" required>
+                        placeholder="Date de naissance" value="{{currentPatient.dob}}">
                         <label for="birthday">Date de naissance</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="birthplace" id="birthplace" placeholder="Lieu de naissance">
+                        <input type="text" class="form-control" name="birthplace" id="birthplace" placeholder="Lieu de naissance" value="{{currentPatient.pob}}">
                         <label for="birthplace">Lieu de naissance</label>
                     </div>
                 </div>
@@ -79,26 +85,33 @@
             <div class="row" id="patient-contact">
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="tel" class="form-control" name="num" id="num" placeholder="77-612-34-56" required>
+                        <input type="number" class="form-control" name="num" id="num" placeholder="77-612-34-56" value="{{currentPatient.num}}">
                         <label for="num"> Numéro de téléphone</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Cette étape est obligatoire.</div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="tel" class="form-control" name="emergency" id="emergency" placeholder="76-598-76-54">
+                        <input type="number" class="form-control" name="emergency" id="emergency" placeholder="76-598-76-54" value="{{currentPatient.emergency}}">
                         <label for="emergency">Contact d'urgence</label>
                     </div>
                 </div>  
                 <div class="col-sm-4">
                     <div class="form-floating">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com" value="{{currentPatient.email}}">
                         <label for="email">Adresse Email</label>
                     </div>
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <div class="col-sm-1">
+                    <h2>Santé</h2>
+                </div>
+                <div class="col-sm-10"></div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-dark" onclick="window.location.href='#'">&#9998</button>
+                </div>
+            </div>
             <div class="row" id="patient-health">
                 <div class="col-md-4">
                     <div class="health-info">
@@ -120,7 +133,7 @@
                     <label class="radio-inline control-label">Sexe</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sex" id="female" value="Femme" checked>
+                        <input class="form-check-input" type="radio" name="sex" id="female" value="{{currentPatient.sex}}" checked>
                         <label class="form-check-label" for="female">
                         Femme
                         </label>
@@ -135,7 +148,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy"></textarea>
+                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" value="{{currentPatient.allergy}}"></textarea>
                         <label for="floatingTextarea">Allergie à: </label>
                     </div>
                 </div>
@@ -143,16 +156,15 @@
             <div class="row" id="patient-condition">
                 <div class="col-sm-12">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness"></textarea>
+                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" value="{{currentPatient.conditions}}"></textarea>
                         <label for="floatingTextarea">Condition médicale du patient (ex: Diabète..)</label>
                     </div>
                 </div>
             </div>
-            <hr>
             <div class="row" id="patient-memo">
                 <div class="col-md-12">   
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Notes" id="memo" name="memo" style="height: 100px"></textarea>
+                        <textarea class="form-control" placeholder="Notes" id="memo" style="height: 100px" name="memo">{{currentPatient.notes}}</textarea>
                         <label for="floatingTextarea2">Notes concernant le patient</label>
                     </div>                 
                 </div>
@@ -160,10 +172,10 @@
             </div>
             <div class="row" id="submitBtn">
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Sauvegarder</button>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/'">Annuler</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/patients/{{currentPatient.id}}'">Annuler</button>
                 </div>
 
             </div>
