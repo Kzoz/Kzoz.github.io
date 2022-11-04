@@ -1,7 +1,7 @@
-from cgi import print_arguments
 import json
 import datetime
-from .models import Patient, Record
+
+from .models import Patient, Record, User
 from flask import Blueprint, render_template, request,redirect, url_for, flash, jsonify
 from flask_login import login_required, current_user
 from . import db
@@ -12,10 +12,27 @@ views = Blueprint('views', __name__)
 superUsers = ['moussa@gmail.com']
 patient_id = 1
 
+
 @views.route('/')
 @login_required
 def home():
-    return render_template('home.html', user=current_user)
+   
+    res = []
+    doctors = User.query.all()
+    patients = Patient.query.all()
+    records = Record.query.all()
+    today = datetime.date.today()
+
+    nextAppointments = Record.query.order_by(Record.next_appo.desc()).where(Record.next_appo >=today).all()
+    listappointments = nextAppointments[::-1][:8]
+    print(listappointments)
+    for i in listappointments:
+        current_patient=Patient.query.get_or_404(i.patient_id)
+        res.append([current_patient.firstname, current_patient.familyname,current_patient.num,i.next_appo])
+    print(res)
+        
+    
+    return render_template('home.html', user=current_user, doctors=doctors, patients=patients, records=records, res=res)
 
 @views.route('/newpatient', methods=['GET','POST'])
 @login_required
@@ -48,6 +65,7 @@ def newpatient():
    
         db.session.add(new_patient)
         db.session.commit()
+        allPatients = Patient.query.all()
         latestPatient = allPatients[-1].id
         
         flash('Un nouveau patient a été ajouté.', category='success')
@@ -65,7 +83,11 @@ def listOfPatients(patientId):
     if request.method == 'POST':
         db.session.delete(current_patient)
         db.session.commit()
-        return redirect(url_for('views.listOfPatients',  patientId=0))
+        if len(patient)>1:
+            head = patient[1].id
+            return redirect(url_for('views.listOfPatients',  patientId=head))
+        else:
+            return redirect(url_for('views.listOfPatients',  patientId=0))
     #current_patient = Patient.query.get_or_404(patient_id)
     return render_template('patients_list.html', user=current_user,patient=patient, current_patient=current_patient)
 

@@ -1,125 +1,123 @@
 {% extends "base.html" %}
 {% block title %}Liste des patients{% endblock %} 
-{% block navigator%} 
-<li class="nav-item">
-    <a class="nav-link active" href="/newpatient">Nouveau Patient
-    </a>
-</li>
-{% endblock %}
 {% block content %}
 
 <style>
-    .mainpage{ padding: 1rem;background-image: linear-gradient(to top right,rgb(255, 255, 255),rgb(229, 226, 226));}
-            .col-lg-3{
-                padding: 2rem;
-            }
-            .col-lg-9{
-                padding: 2rem; color: white;
-            }
-            .col-md-12{
-                border-radius: 10px;
-                padding: 1rem; margin-top: 1rem; margin-bottom: 1rem;
-                box-shadow: 0px 0px 5px 0.1px #dbdcdd;
-            }
-            .col-md-3{
-                margin: 10px;
-                border-radius: 10px;
-                padding: 1rem;
-                box-shadow: 0px 0px 5px 0.1px #c2c4c6;
-            }
-            .col-md-4{
-                margin: 10px;
-                border-radius: 10px;
-                padding: 1rem; 
-                box-shadow: 0px 0px 5px 0.1px #d6d7d9;
-            }
+    .mainpage{ padding: 1rem;}
+    .panel{margin: 1rem;}
+    #subheader{ padding: 5px; margin: 1rem;
+        border: 0.1px solid; border-radius: 10px;}
+    nav a i{
+        color: black;
+        }
+    .col-lg-3{
+        padding: 2rem;
+    }
+    .col-lg-9{
+        padding: 2rem; color: white;
+    }
+    .col-md-12{
+        border-radius: 10px;
+        padding: 1rem; margin-top: 1rem; margin-bottom: 1rem;
+        box-shadow: 0px 0px 8px 0.1px #dbdcdd;
+    }
+    .col-md-3{
+        margin: 10px;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0px 0px 8px 0.1px #c2c4c6;
+    }
+    .col-md-4{
+        margin: 10px;
+        border-radius: 10px;
+        padding: 1rem; 
+        box-shadow: 0px 0px 8px 0.1px #d6d7d9;
+    }
 
-            .col-md-5{
-                padding: 1rem;
-                border-radius: 20px;
-                margin: 1rem;
-                color: rgb(101, 97, 97);
-                background-color: white;
-                box-shadow: 0px 0px 5px 0.1px #d6d7d9;
-            }
-            .sidenav{
-                 border-radius: 10px; height: fit-content;
-                background-image: linear-gradient(to bottom right, rgb(4, 79, 171),rgb(124, 177, 241));
-                box-shadow: 0px 0px 30px 0.1px #738393;
-                color: white; font-weight: bold;
-            }
-            .sidenav-menu{
-                padding: 0 2rem 0 2rem;
-                list-style-type: none;   
-                overflow-x: hidden;
-                overflow-y: auto;
-                text-align:justify;
-                max-height: 400px;
-            }
+    .col-md-5{
+        padding: 1rem;
+        border-radius: 20px;
+        margin: 1rem;
+        color: rgb(101, 97, 97);
+        background-color: white;
+        box-shadow: 0px 0px 9px 0.1px #d6d7d9;
+    }
+    .sidenav{
+            border-radius: 10px; height: fit-content;
+        background-image: linear-gradient(to bottom right, rgb(83, 100, 120),rgb(166, 180, 197));
+        box-shadow: 0px 0px 30px 0.1px #738393;
+        color: white; font-weight: bold;
+    }
+    .sidenav-menu{
+        padding: 0 2rem 0 2rem;
+        list-style-type: none;   
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align:justify;
+        max-height: 400px;
+    }
 
-            .sidenav-menu li a{
-                padding: 8px;
-                display: block;
-                color:blanchedalmond;
-                }
+    .sidenav-menu li a{
+        padding: 8px;
+        display: block;
+        color:blanchedalmond;
+        }
 
-            .form-outline{
-                align-self: flex-start;
-            }
-            .text-center{padding: 1rem;}
+    .form-outline{
+        align-self: flex-start;
+    }
+    .text-center{padding: 1rem;}
 
-            .accessBtn{
-                text-align: center;
-            }
+    .accessBtn{
+        text-align: center;
+    }
 
-            .dropbtn {
-                background-image: linear-gradient(dodgerblue,rgb(0, 128, 255));
-                color: white;
-                
-                padding: 16px;
-                font-size: 16px;
-                border: none;
-                cursor: pointer;
-                border-radius: 50px;
-                box-shadow: 0px 0px 20px 0.1px #8eacca;
-              }
-              
-              .dropbtn:hover, .dropbtn:focus {
-                background-color: #2980B9;
-              }
-              
-              .dropdown {
-                position: relative;
-                display: inline-block;
-              }
-              
-              .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: #f1f1f1;
-                min-width: 160px;
-                overflow: auto;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-              }
-              
-              .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-              }
-              
-              .dropdown a:hover {background-color: #ddd;}
-              .show {display: block;}
+    .dropbtn {
+        border-radius: 30px;
+        padding: 10px;
+        font-size: 16px;
+        }
+        
+        .dropbtn:hover, .dropbtn:focus {
+            box-shadow: 0px 0px 20px 0.1px #3f464d;
+        }
+        
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+        
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+        
+        .dropdown a:hover {background-color: #ddd;}
+        .show {display: block;}
 
-              .bio-row{
-                flex: 1;
-                }
-                .col-md-12 > div{
-                    display: flex;
-                }
-                .memo{display:grid; min-width: 80%; text-align: center;}
+        .bio-row{
+        flex: 1;
+        }
+        .col-md-12 > div{
+            display: flex;
+        }
+        .memo{display:grid; min-width: 80%; text-align: center;}
+
+        #familyname{
+                color:black;
+        }
                 
       
 </style>
@@ -127,6 +125,13 @@
 
 <div class="mainpage">
     <div class="panel">
+        <div class="row" id="subheader">
+            <nav class="nav nav-pills flex-column flex-sm-row" id="inheader">
+              <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="/"><i class="bi bi-house-fill"></i>  Accueil</a>
+              <a class="flex-sm-fill text-sm-center nav-link active" href="/patients/0"><i class="bi bi-person-lines-fill"></i>  Liste des patients</a>
+              <a class="flex-sm-fill text-sm-center nav-link" href="/newpatient"><i class="bi bi-person-plus-fill"></i>  Ajouter un nouveau patient</a>
+            </nav>
+          </div>
         <div class="row">
             <div class="col-lg-3">
                 <div
@@ -165,8 +170,6 @@
                         </li>
                         {%endif%}
                         {%endfor%}
-                        
-
                     </ul>
                     <div class="text-center" style="margin-bottom: 1rem;">
                         <hr class="mt-0 mb-2" />
@@ -175,63 +178,70 @@
 
 </div>
             </div>
-            <div class="col-lg-9">
-                <div class="accessBtn">
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn"> &#9881 À propos du dossier &#x25BC </button>
-                        <div id="myDropdown" class="dropdown-content">
-                            {% if current_patient.id == 0%}
-                            <a href="">Historique des consultations</a> 
-                            <a href="">Modifier le dossier</a>
-                            <button type="submit" class="btn btn-danger " disabled>Supprimer le dossier</button>
-                            {%else%}
-                            <a href="/details/{{current_patient.id}}">Historique des consultations</a> 
-                            <a href="/update/{{current_patient.id}}">Modifier le dossier</a>
-                            <form method="POST">
-                            <button type="submit" class="btn btn-danger ">Supprimer le dossier</button>
-                            </form> 
-                            {%endif%}                                                  
-                        </div>
-                    </div>     
-                </div>
-                <div class="row" style="place-content:center ; margin-top:1rem;">
-                    <div class="col-md-4" style="background-image: linear-gradient(to bottom left,rgb(2, 91, 179),rgb(106, 181, 255));">
+            <div class="col-lg-8">
+                <div class="row">
+                <div class="col-sm-8">
+                    <div class="col-sm-12" style="text-align:center ;">
                         <div class="name">
-                            <div class="bio-row">
-                                <p id="familyName"><span style="font-weight:bold ;">Nom de famille: </span>{{current_patient.familyname}}</p>
-                            </div>
-                            <div class="bio-row">
-                                <p id="surname"><span style="font-weight:bold ;">Prénom(s): </span>{{current_patient.firstname}}</p>
+                            <div class="bio-row" >
+                                <p id="familyName"><span style="font-weight:bold; font-size: xx-large;">
+                                    <i class="bi bi-person-circle"></i>   {{current_patient.firstname}} {{current_patient.familyname}}</span></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3" style="background-image: linear-gradient( #ff7b2e,#ebad89);">
+                </div>
+                <div class="col-sm-4">
+                    <div class="accessBtn">
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn btn btn-outline-dark"> &#9881 Mon dossier &#x25BC </button>
+                            <div id="myDropdown" class="dropdown-content">
+                                {% if current_patient.id == 0%}
+                                <a href="">Historique des consultations</a> 
+                                <a href="">Mettre à jour les informations</a>
+                                <button type="submit" class="btn btn-danger " disabled>Supprimer le dossier</button>
+                                <br>
+                                {%else%}
+                                <a href="/details/{{current_patient.id}}"><i class="bi bi-clock-history"></i> Historique des consultations</a> 
+                                <a href="/update/{{current_patient.id}}"><i class="bi bi-arrow-clockwise"></i> Mettre à jour les informations</a>
+                                <form method="POST">
+                                <button type="submit" class="btn btn-danger "><i class="bi bi-person-x-fill"></i> Supprimer le dossier</button>
+                                </form> 
+                                
+                                {%endif%}                                                  
+                            </div>
+                        </div>     
+                    </div>
+                </div>
+
+                </div>
+                
+               
+
+                <div class="row" style="place-content:center ; margin-top:1rem;">
+                    <div class="col-md-4" style="background-color: rgb(246, 246, 246);">
                         <div class="birth">
                             <div class="bio-row">
-                                <p id="birthday"><span style="font-weight:bold ;">Date de naissance: </span> {{current_patient.dob}}</p>
+                                <p id="birthday"><span style="font-weight:bolder;">Date de naissance: </span> {{current_patient.dob}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="birthplace"><span style="font-weight:bold ;">Lieu de naissance: </span>{{current_patient.pob}}</p>
+                                <p id="birthplace"><span style="font-weight:bolder;">Lieu de naissance: </span>{{current_patient.pob}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4" style="background-color:white; color:rgb(101, 97, 97);">
+                    <div class="col-md-4" style="background-color: rgb(246, 246, 246);">
                         <div class="contact">
                             <div class="bio-row">
-                                <p id="num"><span style="font-weight:bold ;">Numéro de téléphone: </span>{{current_patient.num}}</p>
+                                <p id="num"><span style="font-weight:bolder ;">Numéro de téléphone: </span>{{current_patient.num}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="other"><span style="font-weight:bold ;">Email: </span>{{current_patient.email}}</p>
+                                <p id="other"><span style="font-weight:bolder ;">Email: </span>{{current_patient.email}}</p>
                             </div>
                             <div class="bio-row">
-                                <p id="other"><span style="font-weight:bold ;">Contact d'urgence: </span>{{current_patient.emergency}}</p>
+                                <p id="other"><span style="font-weight:bolder ;">Contact d'urgence: </span>{{current_patient.emergency}}</p>
                             </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="row">
-                    <div class="col-md-12" style="background-color:white; color:rgb(101, 97, 97);">
+                    <div class="col-md-3" style="background-color: rgb(246, 246, 246);">
                         <div class="health">
                             <div class="bio-row">
                                 <p id="sex"><span style="font-weight:bold ;">Sexe: </span>{{current_patient.sex}}</p>
@@ -245,10 +255,26 @@
                         </div>
                     </div>
                 </div>
+    
+                <div class="row">
+                    <div class="col-md-12" style="background-color: rgb(246, 246, 246);">
+                        <div class="health">
+                            <div class="bio-row">
+                                <p id="sex"><span style="font-weight:bold ;">Date de l'accouchement: </span>JJ-MM-AAAA</p>
+                            </div>
+                            <div class="bio-row">
+                                <p id="bloodtype"><span style="font-weight:bold ;">Autre 1: </span>AAA</p>
+                            </div>
+                            <div class="bio-row">
+                                <p id="allergy"><span style="font-weight:bold ;">Status: </span>BBB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row" style="place-content:center ;">
-                    <div class="col-md-5">
+                    <div class="col-md-5" style="background-color: rgb(246, 246, 246);">
                         <div class="bio-row">
-                            <p id="sickness"><span>Conditions: </span>{{current_patient.conditions}}</p>
+                            <p id="sickness"><span style="font-weight:bold;">Condition ou antécédent médical: </span>{{current_patient.conditions}}</p>
                         </div>
                     </div>
                     <div class="col-md-5">
