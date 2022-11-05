@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Nouvel Enregistrement{% endblock %} 
-{% block navigator%} 
-<li class="nav-item">
-    <a class="nav-link active" href="patients/0">Liste des patients
-    </a>
-  </li>
-{% endblock %}
 {% block content %}
 <style>
     .mainpage{
      display: grid;   
-     background-image: linear-gradient(to bottom right, rgb(227, 227, 227),rgb(255,255,255));
+
      padding: 1rem;
     }
     .panel{
         padding: 1rem;
         margin: 1rem; 
         box-shadow: 0px 0px 10px 0.1px #cddeef;
-        background-color: white;
+        background-color: rgb(231, 231, 231);
+        border-radius: 10px;
     }
     h2 {
         text-align: center;
@@ -34,10 +29,27 @@
     .row#submitBtn{
         place-content: center;
     }
+    .subheader{margin: 0 2rem 0 2rem; }
+    #inheader{
+        padding: 5px;
+        border: 0.1px solid; border-radius: 10px; 
+      }
+      nav a i{
+        color: black;
+      }
     
 </style>
 
 <div class="mainpage">
+    <div class="subheader">
+    <div class="row" >
+        <nav class="nav nav-pills flex-column flex-sm-row" id="inheader">
+          <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="/"><i class="bi bi-house-fill"></i>  Accueil</a>
+          <a class="flex-sm-fill text-sm-center nav-link" href="/patients/0"><i class="bi bi-person-lines-fill"></i>  Liste des patients</a>
+          <a class="flex-sm-fill text-sm-center nav-link active" href="/newpatient"><i class="bi bi-person-plus-fill"></i>  Ajouter un nouveau patient</a>
+        </nav>
+      </div>
+    </div>
     <div class="panel">
         <h2> Nouveau Patient</h2>
         <form method="POST" class="was-validated"> 

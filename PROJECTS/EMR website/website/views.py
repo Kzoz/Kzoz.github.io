@@ -81,13 +81,12 @@ def listOfPatients(patientId):
     
     current_patient=Patient.query.get_or_404(patientId)
     if request.method == 'POST':
+        #User.query.filter(User.id == 123).delete()
+        Record.query.filter(Record.patient_id == patientId).delete()
         db.session.delete(current_patient)
         db.session.commit()
-        if len(patient)>1:
-            head = patient[1].id
-            return redirect(url_for('views.listOfPatients',  patientId=head))
-        else:
-            return redirect(url_for('views.listOfPatients',  patientId=0))
+        
+        return redirect(url_for('views.listOfPatients',  patientId=0))
     #current_patient = Patient.query.get_or_404(patient_id)
     return render_template('patients_list.html', user=current_user,patient=patient, current_patient=current_patient)
 
