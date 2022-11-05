@@ -88,7 +88,7 @@ def listOfPatients(patientId):
         
         return redirect(url_for('views.listOfPatients',  patientId=0))
     #current_patient = Patient.query.get_or_404(patient_id)
-    return render_template('patients_list.html', user=current_user,patient=patient, current_patient=current_patient)
+    return render_template('patients_list.html', user=current_user,patient=patient, current_patient=current_patient, superUsers=superUsers)
 
 
 

@@ -203,10 +203,13 @@
                                 {%else%}
                                 <a href="/details/{{current_patient.id}}"><i class="bi bi-clock-history"></i> Historique des consultations</a> 
                                 <a href="/update/{{current_patient.id}}"><i class="bi bi-arrow-clockwise"></i> Mettre à jour les informations</a>
-                                <form method="POST">
-                                <button type="submit" class="btn btn-danger "><i class="bi bi-person-x-fill"></i> Supprimer le dossier</button>
-                                </form> 
-                                
+                                {%if current_user.email in superUsers%}
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                                        <i class="bi bi-person-x-fill"></i> Supprimer le dossier
+                                      </button>
+                                {%else%}
+                                    <button type="submit" class="btn btn-danger " disabled>Supprimer le dossier</button>
+                                {%endif%}
                                 {%endif%}                                                  
                             </div>
                         </div>     
@@ -289,8 +292,35 @@
             </div>
 
         </div>
-        <div class="row">
+        
             
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Souhaitez-vous supprimer le dossier de {{current_patient.firstname}} {{current_patient.familyname}}?</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    Cette action est irréversible et supprimera définitivement le dossier
+                    ainsi que toute son historique de consultations.
+                  </div>
+            
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <form method="POST">
+                        <button type="submit" class="btn btn-danger ">Supprimer définitivement</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    </form>
+                  </div>
+            
+                </div>
+              </div>
             
         </div>
     </div>
