@@ -56,8 +56,8 @@
             <div class="row" id="patient-bio">
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="surname" id="surname" onkeydown="return /[a-z]/i.test(event.key)"
-                        placeholder="Prénom(s)" required minlength="2">
+                        <input type="text" class="form-control" name="surname" id="surname"
+                        placeholder="Prénom(s)" required minlength="2"><!--onkeydown="return /[a-z]/i.test(event.key)-->
                         <label for="surname">Prénom(s)</label>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Cette étape est obligatoire.</div>
@@ -112,7 +112,17 @@
             </div>
             <hr>
             <div class="row" id="patient-health">
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="health-info">
+                        <div class="form-floating">
+                            <select class="form-select form-select-lg mb-3" name="status" id="status">
+                                <option value="Nouvelle patiente">Nouvelle patiente</option>
+                            </select>
+                            <label for="status">Status</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
                     <div class="health-info">
                         <div class="form-floating">
                             <select class="form-select form-select-lg mb-3" name="bloodtype" id="bloodtype">
@@ -128,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label class="radio-inline control-label">Sexe</label>
                     <br>
                     <div class="form-check form-check-inline">
@@ -142,21 +152,44 @@
                         <label class="form-check-label" for="male">
                         Homme
                         </label>
+                    </div>  
+                </div>
+                <div class="col-md-2">
+                    <div class="form-floating">
+                        <input type="date" class="form-control" name="delivery" id="delivery" placeholder="Accouchement prévu pour:">
+                        <label for="delivery">Accouchement prévu pour:</label>
                     </div>
-                    
+                </div>
+                <div class="col-md-3">
+                    <div class="health-info">
+                        <div class="form-floating">
+                            <select class="form-select form-select-lg mb-3" name="status" id="status">
+                                <option value="Oui">Oui</option>
+                                <option value="Oui">Non</option>
+                            </select>
+                            <label for="status">Première grossesse</label>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row" id="patient-condition">
+                <div class="col-md-5">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" style="height: 100px;"></textarea>
+                        <label for="sickness">Condition ou antécédent médical (du patient ou dans la famille)</label>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy"></textarea>
-                        <label for="floatingTextarea">Allergie à: </label>
+                        <textarea class="form-control" placeholder="Traitement" id="treatment" name="treatment" style="height: 100px;"></textarea>
+                        <label for="treatment">Traitement actuel ou prise de médicaments</label>
                     </div>
                 </div>
-            </div>
-            <div class="row" id="patient-condition">
-                <div class="col-sm-12">
+                <div class="col-md-3">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness"></textarea>
-                        <label for="floatingTextarea">Condition ou antécédent médical du patient</label>
+                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" style="height: 100px;"></textarea>
+                        <label for="allergy">Allergie à: </label>
                     </div>
                 </div>
             </div>
@@ -165,7 +198,7 @@
                 <div class="col-md-12">   
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Notes" id="memo" name="memo" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Notes concernant le patient</label>
+                        <label for="memo">Notes concernant le patient</label>
                     </div>                 
                 </div>
 

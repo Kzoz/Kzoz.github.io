@@ -96,21 +96,45 @@
         <form method="POST">
             <div class="row">
                 <div class="col-sm-2">
-                    <label for="num"> Date</label>
-                    <input type="date" name="notedate" id="notedate" class="form-control">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="notedate"> Date</label>
+                            <input type="date" name="notedate" id="notedate" class="form-control" required>
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="notetime"> Heure</label>
+                            <input type="time" name="notetime" id="notetime" class="form-control" min="08:00" max="20:00" required>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3" >
                     <label for="num"> Diagnostic</label>
-                    <textarea type="text" name="note" id="note" class="form-control"> </textarea>
+                    <textarea type="text" name="note" id="note" class="form-control" rows="5"> </textarea>  
                 </div>
                 <div class="col-sm-3">
-                    <label for="num"> Prescription</label>
-                    <textarea type="text" name="drugs" id="drugs" class="form-control"> </textarea>
-                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="num"> Prescription</label>
+                            <textarea type="text" name="drugs" id="drugs" class="form-control"> </textarea>
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="notes">Notes</label>
+                            <textarea type="text" name="notes" id="notes" class="form-control"> </textarea>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-2">
-                    <label for="num"> Prochain Rendez-vous</label>
-                    <input type="date" name="nextappo" id="nextappo" class="form-control">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="num"> Prochain Rendez-vous</label>
+                            <input type="date" name="nextappo" id="nextappo" class="form-control">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="appotime">Heure du Rendez-vous</label>
+                            <input type="time" name="appotime" id="appotime" class="form-control">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-success">Ajouter</button>

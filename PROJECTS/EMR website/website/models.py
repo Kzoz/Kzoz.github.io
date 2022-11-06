@@ -40,5 +40,6 @@ class Patient(db.Model):
     allergy = db.Column(db.String(1000))
     conditions = db.Column(db.String(1000))
     notes = db.Column(db.String(10000))
+    #status = db.Column(db.String(32))
     consultation = db.relationship('Record')
 

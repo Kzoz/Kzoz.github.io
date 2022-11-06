@@ -56,16 +56,16 @@
             <div class="row" id="patient-bio">
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="familyName" id="familyName" onkeydown="return /[a-z]/i.test(event.key)"
-                        placeholder="Nom de Famille" value="{{currentPatient.familyname}}">
-                        <label for="familyName">Nom de famille</label>
+                        <input type="text" class="form-control" name="surname" id="surname" 
+                        placeholder="Prénom(s)"value="{{currentPatient.firstname}}">
+                        <label for="surname">Prénom(s)</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="surname" id="surname" onkeydown="return /[a-z]/i.test(event.key)"
-                        placeholder="Prénom(s)"value="{{currentPatient.firstname}}">
-                        <label for="surname">Prénom(s)</label>
+                        <input type="text" class="form-control" name="familyName" id="familyName"
+                        placeholder="Nom de Famille" value="{{currentPatient.familyname}}">
+                        <label for="familyName">Nom de famille</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -113,7 +113,22 @@
                 </div>
             </div>
             <div class="row" id="patient-health">
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="health-info">
+                        <div class="form-floating">
+                            <select class="form-select form-select-lg mb-3" name="status" id="status">
+                                <option value="Nouvelle patiente">Nouvelle patiente</option>                               
+                                <option value="Premier trimestre">Premier trimestre</option>
+                                <option value="Deuxiéme trimestre">Deuxiéme trimestre</option>
+                                <option value="Dernier trimestre">Dernier trimestre</option>
+                                <option value="Post accouchement">Post accouchement</option>
+                                <option value="Autre consultation">Autre consultation</option>
+                            </select>
+                            <label for="status">Status</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
                     <div class="health-info">
                         <div class="form-floating">
                             <select class="form-select form-select-lg mb-3" name="bloodtype" id="bloodtype">
@@ -129,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label class="radio-inline control-label">Sexe</label>
                     <br>
                     <div class="form-check form-check-inline">
@@ -146,20 +161,45 @@
                     </div>
                     
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" value="{{currentPatient.allergy}}"></textarea>
-                        <label for="floatingTextarea">Allergie à: </label>
+                        <input type="date" class="form-control" name="delivery" id="delivery" placeholder="Accouchement prévu pour:">
+                        <label for="delivery">Accouchement prévu pour:</label>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="health-info">
+                        <div class="form-floating">
+                            <select class="form-select form-select-lg mb-3" name="status" id="status">
+                                <option value="Oui">Oui</option>
+                                <option value="Oui">Non</option>
+                            </select>
+                            <label for="status">Première grossesse</label>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             <div class="row" id="patient-condition">
-                <div class="col-sm-12">
+                <div class="col-md-5">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" value="{{currentPatient.conditions}}"></textarea>
+                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" value="{{currentPatient.conditions}}" style="height: 100px;"></textarea>
                         <label for="floatingTextarea" >Condition ou antécédent médical du patient</label>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Traitement" id="treatment" name="treatment" style="height: 100px;"></textarea>
+                        <label for="treatment">Traitement actuel ou prise de médicaments</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" value="{{currentPatient.allergy}}" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Allergie à: </label>
+                    </div>
+                </div>
+
             </div>
             <div class="row" id="patient-memo">
                 <div class="col-md-12">   

@@ -43,13 +43,17 @@ def newpatient():
         return redirect(url_for('views.home'))
     if request.method=='POST':
         familyname = request.form.get('familyName')
+        familyname = familyname.isupper()
         surname = request.form.get('surname')
+        surname = surname.capitalize()
         birthday = datetime.datetime.strptime(
                      request.form['birthday'],
                      '%Y-%m-%d').date()
         birthplace = request.form.get('birthplace')
+        birthplace = birthplace.capitalize()
         num = request.form.get('num')
         email = request.form.get('email')
+        status = request.form.get('status')
         emergency = request.form.get('emergency')
         bloodtype = request.form.get('bloodtype')
         sex = request.form.get('sex')
@@ -140,6 +144,7 @@ def updateInfo(patientId):
         currentPatient.pob = request.form.get('birthplace')
         currentPatient.num = request.form.get('num')
         currentPatient.email = request.form.get('email')
+        #currentPatient.status = request.form.get('status')
         currentPatient.emergency = request.form.get('emergency')
         currentPatient.sex = request.form.get('sex')
         currentPatient.bloodtype = request.form.get('bloodtype')
