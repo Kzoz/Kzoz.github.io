@@ -117,6 +117,7 @@
                     <div class="health-info">
                         <div class="form-floating">
                             <select class="form-select form-select-lg mb-3" name="status" id="status">
+                                <option value="{{currentPatient.status}}" selected>{{currentPatient.status}}</option>
                                 <option value="Nouvelle patiente">Nouvelle patiente</option>                               
                                 <option value="Premier trimestre">Premier trimestre</option>
                                 <option value="Deuxiéme trimestre">Deuxiéme trimestre</option>
@@ -132,6 +133,7 @@
                     <div class="health-info">
                         <div class="form-floating">
                             <select class="form-select form-select-lg mb-3" name="bloodtype" id="bloodtype">
+                                <option value="{{currentPatient.bloodtype}}" selected> Groupe {{currentPatient.bloodtype}}</option>
                                 <option value="O+">O+</option>
                                 <option value="O-">O-</option>
                                 <option value="A+">A+</option>
@@ -163,18 +165,19 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-floating">
-                        <input type="date" class="form-control" name="delivery" id="delivery" placeholder="Accouchement prévu pour:">
+                        <input type="date" class="form-control" name="delivery" id="delivery" placeholder="Accouchement prévu pour:" value="{{currentPatient.delivery}}">
                         <label for="delivery">Accouchement prévu pour:</label>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="health-info">
                         <div class="form-floating">
-                            <select class="form-select form-select-lg mb-3" name="status" id="status">
+                            <select class="form-select form-select-lg mb-3" name="firstpregnancy" id="firstpregnancy">
+                                <option value="{{currentPatient.firstpregnancy}}">{{currentPatient.firstpregnancy}}</option>
                                 <option value="Oui">Oui</option>
-                                <option value="Oui">Non</option>
+                                <option value="Non">Non</option>
                             </select>
-                            <label for="status">Première grossesse</label>
+                            <label for="firstpregnancy">Première grossesse</label>
                         </div>
                     </div>
                 </div>
@@ -183,19 +186,19 @@
             <div class="row" id="patient-condition">
                 <div class="col-md-5">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" value="{{currentPatient.conditions}}" style="height: 100px;"></textarea>
+                        <textarea class="form-control" placeholder="Conditions médicales" id="sickness" name="sickness" style="height: 100px;" >{{currentPatient.conditions}}</textarea>
                         <label for="floatingTextarea" >Condition ou antécédent médical du patient</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Traitement" id="treatment" name="treatment" style="height: 100px;"></textarea>
-                        <label for="treatment">Traitement actuel ou prise de médicaments</label>
+                        <textarea class="form-control" placeholder="Traitement" id="treatment" name="treatment"  style="height: 100px;">{{currentPatient.treatment}}</textarea>
+                        <label for="treatment">Traitement ou prise de médicaments</label>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" value="{{currentPatient.allergy}}" style="height: 100px;"></textarea>
+                        <textarea class="form-control" placeholder="Allergies" id="allergy" name="allergy" value="{{currentPatient.allergy}}" style="height: 100px;">{{currentPatient.allergy}}</textarea>
                         <label for="floatingTextarea">Allergie à: </label>
                     </div>
                 </div>

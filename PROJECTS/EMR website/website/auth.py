@@ -38,6 +38,7 @@ def sign_up():
     if request.method == 'POST':
         email = request.form.get("email")
         name = request.form.get("name")
+        name = name.capitalize()
         password = request.form.get("password")
         password2 = request.form.get("password2")
 

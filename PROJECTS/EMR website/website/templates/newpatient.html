@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="familyName" id="familyName" onkeydown="return /[a-z]/i.test(event.key)"
+                        <input type="text" class="form-control" name="familyName" id="familyName"
                         placeholder="Nom de Famille" required minlength="2">
                         <label for="familyName">Nom de famille</label>
                         <div class="valid-feedback"></div>
@@ -156,18 +156,18 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-floating">
-                        <input type="date" class="form-control" name="delivery" id="delivery" placeholder="Accouchement prévu pour:">
+                        <input type="date" class="form-control" name="delivery" id="delivery" placeholder="Accouchement prévu pour:" value="0001-01-01">
                         <label for="delivery">Accouchement prévu pour:</label>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="health-info">
                         <div class="form-floating">
-                            <select class="form-select form-select-lg mb-3" name="status" id="status">
+                            <select class="form-select form-select-lg mb-3" name="firstpregnancy" id="firstpregnancy">
                                 <option value="Oui">Oui</option>
-                                <option value="Oui">Non</option>
+                                <option value="Non">Non</option>
                             </select>
-                            <label for="status">Première grossesse</label>
+                            <label for="firstpregnancy">Première grossesse</label>
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                 <div class="col-md-4">
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Traitement" id="treatment" name="treatment" style="height: 100px;"></textarea>
-                        <label for="treatment">Traitement actuel ou prise de médicaments</label>
+                        <label for="treatment">Traitement ou prise de médicaments</label>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -201,7 +201,6 @@
                         <label for="memo">Notes concernant le patient</label>
                     </div>                 
                 </div>
-
             </div>
             <div class="row" id="submitBtn">
                 <div class="col-sm-2">

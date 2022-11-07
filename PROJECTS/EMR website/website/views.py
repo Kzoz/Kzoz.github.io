@@ -43,7 +43,7 @@ def newpatient():
         return redirect(url_for('views.home'))
     if request.method=='POST':
         familyname = request.form.get('familyName')
-        familyname = familyname.isupper()
+        familyname = familyname.capitalize()
         surname = request.form.get('surname')
         surname = surname.capitalize()
         birthday = datetime.datetime.strptime(
@@ -54,6 +54,11 @@ def newpatient():
         num = request.form.get('num')
         email = request.form.get('email')
         status = request.form.get('status')
+        firstpregnancy = request.form.get('firstpregnancy')
+        treatment = request.form.get('treatment')
+        delivery = datetime.datetime.strptime(
+                     request.form['delivery'],
+                     '%Y-%m-%d').date()
         emergency = request.form.get('emergency')
         bloodtype = request.form.get('bloodtype')
         sex = request.form.get('sex')
@@ -63,7 +68,8 @@ def newpatient():
        
         new_patient = Patient(familyname = familyname, firstname=surname, dob=birthday,
         pob=birthplace, num=num, email=email, emergency=emergency, sex=sex, bloodtype=bloodtype,
-        allergy=allergy, conditions=sickness, notes=memo)
+        allergy=allergy, conditions=sickness, notes=memo, status= status, treatment=treatment, 
+        delivery=delivery,firstpregnancy=firstpregnancy)
 
 
    
@@ -144,13 +150,18 @@ def updateInfo(patientId):
         currentPatient.pob = request.form.get('birthplace')
         currentPatient.num = request.form.get('num')
         currentPatient.email = request.form.get('email')
-        #currentPatient.status = request.form.get('status')
+        currentPatient.status = request.form.get('status')
+        currentPatient.treatment = request.form.get('treatment')
+        currentPatient.delivery = datetime.datetime.strptime(
+                     request.form['delivery'],
+                     '%Y-%m-%d').date()
+        currentPatient.firstpregnancy = request.form.get('firstpregnancy')
         currentPatient.emergency = request.form.get('emergency')
         currentPatient.sex = request.form.get('sex')
         currentPatient.bloodtype = request.form.get('bloodtype')
         currentPatient.allergy = request.form.get('allergy')
-        currentPatient.notes = request.form.get('sickness')
-        currentPatient.conditions = request.form.get('memo')
+        currentPatient.notes = request.form.get('memo')
+        currentPatient.conditions = request.form.get('sickness')
 
         db.session.add(currentPatient)
         db.session.commit()

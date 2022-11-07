@@ -13,37 +13,26 @@
     .col-lg-3{
         padding: 2rem;
     }
-    .col-lg-9{
-        padding: 2rem; color: white;
-    }
-    .col-md-12{
-        border-radius: 10px;
-        padding: 1rem; margin-top: 1rem; margin-bottom: 1rem;
-        box-shadow: 0px 0px 8px 0.1px #dbdcdd;
-    }
+   
     .col-md-3{
         margin: 10px;
-        border-radius: 10px;
         padding: 1rem;
-        box-shadow: 0px 0px 8px 0.1px #c2c4c6;
+        box-shadow: 0px 0px 5px 0.1px #c2c4c6;
     }
     .col-md-4{
         margin: 10px;
-        border-radius: 10px;
         padding: 1rem; 
-        box-shadow: 0px 0px 8px 0.1px #d6d7d9;
+        box-shadow: 0px 0px 5px 0.1px #d6d7d9;
     }
 
-    .col-md-5{
+    #infosante{
         padding: 1rem;
-        border-radius: 20px;
-        margin: 1rem;
-        color: rgb(101, 97, 97);
-        background-color: white;
-        box-shadow: 0px 0px 9px 0.1px #d6d7d9;
+        margin-top: 1rem;
+        background-color: rgb(246, 246, 246);
+        box-shadow: 0px 0px 5px 0.1px #d6d7d9;
     }
     .sidenav{
-            border-radius: 10px; height: fit-content;
+        border-radius: 5px; height: fit-content;
         background-image: linear-gradient(to bottom right, rgb(83, 100, 120),rgb(166, 180, 197));
         box-shadow: 0px 0px 30px 0.1px #738393;
         color: white; font-weight: bold;
@@ -110,14 +99,15 @@
         .bio-row{
         flex: 1;
         }
-        .col-md-12 > div{
+        .col-sm-12 > div{
             display: flex;
         }
-        .memo{display:grid; min-width: 80%; text-align: center;}
+       
 
         #familyname{
                 color:black;
         }
+        
                 
       
 </style>
@@ -176,7 +166,7 @@
                         <small >Dossier Patient Électronique</small>
                     </div>
 
-</div>
+        </div>
             </div>
             <div class="col-lg-8">
                 <div class="row">
@@ -215,10 +205,13 @@
                         </div>     
                     </div>
                 </div>
-
                 </div>
                 
                
+
+                <!--###############################################-->
+
+
 
                 <div class="row" style="place-content:center ; margin-top:1rem;">
                     <div class="col-md-4" style="background-color: rgb(246, 246, 246);">
@@ -258,37 +251,49 @@
                         </div>
                     </div>
                 </div>
-    
-                <div class="row">
-                    <div class="col-md-12" style="background-color: rgb(246, 246, 246);">
-                        <div class="health">
-                            <div class="bio-row">
-                                <p id="sex"><span style="font-weight:bold ;">Date de l'accouchement: </span>JJ-MM-AAAA</p>
-                            </div>
-                            <div class="bio-row">
-                                <p id="bloodtype"><span style="font-weight:bold ;">Medication: </span>AAA</p>
-                            </div>
-                            <div class="bio-row">
-                                <p id="allergy"><span style="font-weight:bold ;">Status: </span>BBB</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="place-content:center ;">
-                    <div class="col-md-5" style="background-color: rgb(246, 246, 246);">
-                        <div class="bio-row">
-                            <p id="sickness"><span style="font-weight:bold;">Condition ou antécédent médical: </span>{{current_patient.conditions}}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="memo">
-                            <label for="patientmemo">Mémo</label>
-                            <textarea rows="5" name="patientmemo" id="patientmemo">{{current_patient.notes}}</textarea>
-                        </div>
-                    </div>
-
-                </div>
                 
+                <!--###############################################-->
+                
+                <div class="row" id="infosante">
+                    <div class="col-sm-12">
+                        <h4>Info Santé</h4>
+                    </div>
+                    <hr class="solid">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="bio-row">
+                                <label for="delivery">Accouchement prévu pour: </label>
+                                <p id="delivery" style="font-weight:bold;">{{current_patient.delivery}}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="bio-row">
+                                <label for="firstbirth">Première grossesse:  </label>
+                                <p id="firstbirth" style="font-weight:bold;">{{current_patient.firstpregnancy}}</p>
+                            </div>
+                        </div>   
+                        <div class="col-sm-4">
+                            <div class="bio-row">
+                                <label for="status">Status: </label>
+                                <button type="button" class="btn btn-outline-success">{{current_patient.status}}</button>
+                            </div>
+                        </div>   
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <label for="sickness">Condition ou antécédent médical: </label>
+                        <p id="sickness" style="font-weight:bold;">{{current_patient.conditions}}</p>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <label for="treatment">Traitement ou prise de médicaments: </label>
+                        <p id="treatment" style="font-weight:bold;">{{current_patient.treatment}}</p>
+                    </div>
+                    <div class="col-sm-12"> 
+                        <label for="patientmemo">Mémo</label>
+                        <textarea class="form-control" name="patientmemo" id="patientmemo" style="height: 100px">{{current_patient.notes}}</textarea>
+                    </div>
+                </div> 
             </div>
 
         </div>
