@@ -15,9 +15,12 @@ class Record(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey("patient.id"))
     date = db.Column(db.Date)
+    time = db.Column(db.Time)
     notes = db.Column(db.String(10000))
+    diagnostic = db.Column(db.String(10000))
     drugs = db.Column(db.String(2000))
     next_appo = db.Column(db.Date)
+    appo_time = db.Column(db.Time)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

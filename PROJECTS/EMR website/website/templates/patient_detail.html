@@ -81,6 +81,21 @@
                         <p id="bloodtype"><span>Groupe sanguin: </span>{{currentPatient.bloodtype}}</p>
                     </div>
                     <div class="bio-row">
+                        <p id="bloodtype"><span>Première grossesse: </span>{{currentPatient.firstpregnancy}}</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="allergy"><span>Accouchement prévu pour: </span>{{currentPatient.delivery}}</p>
+                    </div>
+  
+                </div>
+                <div class="health">
+                    <div class="bio-row">
+                        <p id="sickness"><span>Status: </span>{{currentPatient.status}}</p>
+                    </div>
+                    <div class="bio-row">
+                        <p id="sex"><span>Traitement ou Médicaments: </span>{{currentPatient.treatment}}</p>
+                    </div>
+                    <div class="bio-row">
                         <p id="allergy"><span>Allergies: </span>{{currentPatient.allergy}}</p>
                     </div>
                     <div class="bio-row">
@@ -109,13 +124,13 @@
                     </div>
                 </div>
                 <div class="col-md-3" >
-                    <label for="num"> Diagnostic</label>
-                    <textarea type="text" name="note" id="note" class="form-control" rows="5"> </textarea>  
+                    <label for="diagnostic"> Diagnostic</label>
+                    <textarea type="text" name="diagnostic" id="idagnostic" class="form-control" rows="5"> </textarea>  
                 </div>
                 <div class="col-sm-3">
                     <div class="row">
                         <div class="col-sm-12">
-                            <label for="num"> Prescription</label>
+                            <label for="drugs"> Prescription</label>
                             <textarea type="text" name="drugs" id="drugs" class="form-control"> </textarea>
                         </div>
                         <div class="col-sm-12">
@@ -127,7 +142,7 @@
                 <div class="col-sm-2">
                     <div class="row">
                         <div class="col-sm-12">
-                            <label for="num"> Prochain Rendez-vous</label>
+                            <label for="nextappo"> Prochain Rendez-vous</label>
                             <input type="date" name="nextappo" id="nextappo" class="form-control">
                         </div>
                         <div class="col-sm-12">
@@ -146,20 +161,44 @@
         {% for item in currentPatient.consultation[::-1] %}
         <div class="row" id="history">
             <div class="col-sm-2">
-                <label for="date"> Date</label>
-                <p id="date">{{item.date}}</p>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="date"> Date</label>
+                        <p id="date">{{item.date}}</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="date"> Heure</label>
+                        <p id="date">{{item.time}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <label for="note"> Diagnostic</label>
-                <p id="note">{{item.notes}}</p>
+                <p id="note">{{item.diagnostic}}</p>
             </div>
             <div class="col-sm-3">
-                <label for="drugs"> Prescription</label>
-                <p id="drugs">{{item.drugs}} </p>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="drugs"> Prescription</label>
+                        <p id="drugs">{{item.drugs}} </p>
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="note"> Notes</label>
+                        <p id="note">{{item.notes}}</p>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-2">
-                <label for="nextappo"> Prochain rendez-vous</label>
-                <p id="nextappo">{{item.next_appo}}</p>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="nextappo"> Prochain rendez-vous</label>
+                        <p id="nextappo">{{item.next_appo}}</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="nextappo">Heure du rendez-vous</label>
+                        <p id="nextappo">{{item.appo_time}}</p>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-2">
                 <button type="button" class="btn btn-danger" onclick="deleteHistory({{ item.id }})">Supprimer</button>

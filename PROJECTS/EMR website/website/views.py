@@ -1,5 +1,6 @@
 import json
 import datetime
+from pydoc import apropos
 
 from .models import Patient, Record, User
 from flask import Blueprint, render_template, request,redirect, url_for, flash, jsonify
@@ -28,7 +29,8 @@ def home():
     print(listappointments)
     for i in listappointments:
         current_patient=Patient.query.get_or_404(i.patient_id)
-        res.append([current_patient.firstname, current_patient.familyname,current_patient.num,i.next_appo])
+        res.append([current_patient.firstname, current_patient.familyname,current_patient.num,i.next_appo, 
+        i.appo_time ,current_patient.status])
     print(res)
         
     
@@ -105,10 +107,8 @@ def listOfPatients(patientId):
 @views.route('/details/<int:patientId>', methods=['GET','POST'])
 @login_required
 def patientDetails(patientId):
-    
     global patient_id
     patientId = patient_id
-    
     currentPatient = Patient.query.get_or_404(patientId)
     #patient = Patient.query.all()
 
@@ -116,13 +116,21 @@ def patientDetails(patientId):
         date = datetime.datetime.strptime(
                      request.form['notedate'],
                      '%Y-%m-%d').date()
-        notes = request.form.get('note')
+        time = datetime.datetime.strptime(
+                     request.form['notetime'],
+                     '%H:%M').time()
+        notes = request.form.get('notes')
+        diagnostic = request.form.get('diagnostic')
         drugs = request.form.get('drugs')
         next_appo = datetime.datetime.strptime(
                      request.form['nextappo'],
                      '%Y-%m-%d').date()
+        appo_time = datetime.datetime.strptime(
+                     request.form['appotime'],
+                     '%H:%M').time()
 
-        new_consultation = Record(patient_id=patientId, date=date, notes=notes, drugs=drugs, next_appo=next_appo)
+        new_consultation = Record(patient_id=patientId, date=date, time=time,notes=notes,diagnostic=diagnostic,
+        drugs=drugs, next_appo=next_appo, appo_time=appo_time)
         db.session.add(new_consultation)
         db.session.commit()
         return redirect(url_for('views.patientDetails', patientId=currentPatient.id))

@@ -105,7 +105,7 @@
 
 
       <div class="row" id="appointment">
-        <div  class="col-lg-8" id="rv">
+        <div  class="col-lg-10" id="rv">
         <div  class="row">
             <div class="col-sm-9">
               <h3> Les prochains rendez-vous</h3>
@@ -117,14 +117,17 @@
         </div>
         <br>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <p><i class="bi bi-person-badge-fill"></i> Nom</p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <p><i class="bi bi-telephone-forward"></i> Contact</p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <p><i class="bi bi-calendar"></i> Date du rendez-vous</p>
+          </div>
+          <div class="col-sm-3">
+            <p><i class="bi bi-hospital-fill"></i> Status</p>
           </div>
 
         </div>
@@ -132,14 +135,17 @@
         {% for i in res%}
           <div  class="row">
             <hr>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <p>{{i[0]}}  {{i[1]}}</p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <p>{{i[2]}}</p>
             </div>
-            <div class="col-sm-4">
-              <p>{{i[3]}}</p>
+            <div class="col-sm-3">
+              <p>{{i[3]}} {{i[4]}}</p>
+            </div>
+            <div class="col-sm-3">
+              <button type="button" class="btn btn-outline-secondary">{{i[5]}}</button>
             </div>
           </div>
         {%endfor%}
@@ -193,7 +199,7 @@
                 {{listrec[0]}}
               </div>
               <div class="col-sm-3">
-                <button type="button" class="btn btn-outline-success">Guéri</button>
+                <button type="button" class="btn btn-outline-success">{{patient.status}}</button>
               </div>
             </div>
           {%endfor%}
