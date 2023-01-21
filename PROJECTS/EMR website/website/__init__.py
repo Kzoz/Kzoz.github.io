@@ -9,7 +9,6 @@ DB_NAME = 'database.db'
 def create_ws_app():
     app = Flask(__name__)
     app.secret_key = 'svbjn67dcs'
-    #app.config['SECRET KEY'] = '77w7wldfwpi3'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
